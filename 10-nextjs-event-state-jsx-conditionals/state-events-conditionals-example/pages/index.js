@@ -43,8 +43,11 @@ export default function Home() {
     // check search exists
     if (search.trim() !== "") {
       filteredMovies = filteredMovies.filter((movie)=> {
-        console.log(movie)
-        console.log(search)
+        let lowerSearch = search.toLowerCase()
+        let lowerMovie = movie.name.toLowerCase()
+        console.log(lowerSearch)
+        console.log(lowerMovie)
+        console.log(lowerMovie.includes(lowerSearch))
         console.log("-----------------")
         return true
       })
