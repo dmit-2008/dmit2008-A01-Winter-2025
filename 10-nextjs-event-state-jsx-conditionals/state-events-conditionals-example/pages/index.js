@@ -60,11 +60,7 @@ export default function Home() {
 
     // set the state of the page.
     setMovies(filteredMovies)
-
-
   }
-
-
 
   return (
     <div>
