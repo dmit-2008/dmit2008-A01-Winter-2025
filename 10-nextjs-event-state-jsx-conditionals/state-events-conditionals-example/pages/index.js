@@ -79,10 +79,15 @@ export default function Home() {
       setErrorMessage("A string is not a valid year")
       return false
     }
-
     // display an error message in your jsx
-    // remove it if there's no errors
+    if (parseInt(year) > 2200 || parseInt(year) < 1895) {
+      setErrorMessage("Not a valid year.")
+      return false
+    }
+    // remove it if there's no error
     // hint: use shortcircuit
+    return true
+
   }
 
   return (
@@ -141,9 +146,16 @@ export default function Home() {
                 >Filter</Button>
               </Grid>
               <Grid item xs={10}>
-                {/* Add the error message here*/}
+                {/* The short circuit
+                  This line can be interpreted as follows.
+                  if (errorMessage !== "") {
+                    show the Alert in jsx
+                  }
+                */}
                 { errorMessage !== "" &&
-
+                  <Alert severity="error">
+                    {errorMessage}
+                  </Alert>
                 }
               </Grid>
             </Grid>
