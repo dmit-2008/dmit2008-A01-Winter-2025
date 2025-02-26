@@ -42,7 +42,10 @@ export default function Home() {
   const handleForm = (event) => {
     event.preventDefault()
     // we can call the is year valid
-    isYearValid()
+    if (isYearValid()) {
+      // empty array of movies
+      setMovies([])
+    }
     // we're going to create a temporary list.
     let filteredMovies = [...MOVIE_LIST]
     // check search exists
@@ -86,8 +89,8 @@ export default function Home() {
     }
     // remove it if there's no error
     // hint: use shortcircuit
+    setErrorMessage("")
     return true
-
   }
 
   return (
@@ -129,6 +132,8 @@ export default function Home() {
               </Grid>
               <Grid item xs={4}>
                 <TextField
+                  error={errorMessage !== ""}
+                  helperText={errorMessage}
                   id="year-field"
                   label="year"
                   variant="standard"
@@ -161,7 +166,13 @@ export default function Home() {
             </Grid>
           </form>
           <List sx={{width: `100%`}}>
-          { movies.map((movieData, index)=> {
+          {/* make a ternary above the movie
+          list that returns a single list item
+          that shows the number of results
+          or "No Results FOund" */}
+
+          {
+            movies.map((movieData, index)=> {
               return <ListItem key={index}>
                 <ListItemText>
                   <Typography variant="p" component="div">
