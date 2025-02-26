@@ -28,6 +28,9 @@ export default function Home() {
   // so that it can change.
   const [movies, setMovies] = useState(MOVIE_LIST)
 
+  // error message a stateful value.
+  const [errorMessage, setErrorMessage] = useState("")
+
   /*
     to filter movies we'll need:
     - search value
@@ -38,6 +41,8 @@ export default function Home() {
   */
   const handleForm = (event) => {
     event.preventDefault()
+    // we can call the is year valid
+    isYearValid()
     // we're going to create a temporary list.
     let filteredMovies = [...MOVIE_LIST]
     // check search exists
@@ -64,9 +69,19 @@ export default function Home() {
 
   const isYearValid  = () => {
     // is going to be called in the function handleForm
+    // check if it's empty
+    if (year.trim() === "") {
+      setErrorMessage("")
+      return true
+    }
     // return true or false based on is the year valid
+    if (isNaN(year)) {
+      setErrorMessage("A string is not a valid year")
+      return false
+    }
+
     // display an error message in your jsx
-    // remove if there's no errors
+    // remove it if there's no errors
     // hint: use shortcircuit
   }
 
