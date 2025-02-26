@@ -56,7 +56,7 @@ export default function Home() {
       filteredMovies = filteredMovies.filter((movie)=> {
         console.log(movie)
         console.log(year)
-        console.log(movie.year === year)
+        console.log(movie.year === parseInt(year))
         console.log("----------------------")
         return true
       })
