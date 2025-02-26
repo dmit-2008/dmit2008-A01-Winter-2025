@@ -62,6 +62,14 @@ export default function Home() {
     setMovies(filteredMovies)
   }
 
+  const isYearValid  = () => {
+    // is going to be called in the function handleForm
+    // return true or false based on is the year valid
+    // display an error message in your jsx
+    // remove if there's no errors
+    // hint: use shortcircuit
+  }
+
   return (
     <div>
       <Head>
