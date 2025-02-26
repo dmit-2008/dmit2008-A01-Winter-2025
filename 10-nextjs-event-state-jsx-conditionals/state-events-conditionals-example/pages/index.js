@@ -45,13 +45,15 @@ export default function Home() {
       filteredMovies = filteredMovies.filter((movie)=> {
         let lowerSearch = search.toLowerCase()
         let lowerMovie = movie.name.toLowerCase()
-        console.log(lowerSearch)
-        console.log(lowerMovie)
-        console.log(lowerMovie.includes(lowerSearch))
-        console.log("-----------------")
-        return true
+        // return true keep it, return false to ignore it
+        // .include returns true or false
+        return lowerMovie.includes(lowerSearch)
       })
     }
+
+    // set the state of the page.
+    setMovies(filteredMovies)
+
 
   }
 
