@@ -142,6 +142,9 @@ export default function Home() {
               </Grid>
               <Grid item xs={10}>
                 {/* Add the error message here*/}
+                { errorMessage !== "" &&
+
+                }
               </Grid>
             </Grid>
           </form>
