@@ -40,7 +40,15 @@ export default function Home() {
     event.preventDefault()
     // we're going to create a temporary list.
     let filteredMovies = [...MOVIE_LIST]
-    //
+    // check search exists
+    if (search.trim() !== "") {
+      filteredMovies = filteredMovies.filter((movie)=> {
+        console.log(movie)
+        console.log(search)
+        console.log("-----------------")
+        return true
+      })
+    }
 
   }
 
