@@ -52,6 +52,14 @@ export default function Home() {
     }
 
     // filter the year.
+    if (year.trim() !== "") {
+      filteredMovies = filteredMovies.filter((movie)=> {
+        console.log(movie)
+        console.log(year)
+
+        return true
+      })
+    }
 
     // set the state of the page.
     setMovies(filteredMovies)
