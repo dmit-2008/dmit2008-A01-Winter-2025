@@ -169,16 +169,29 @@ export default function Home() {
           {/* make a ternary above the movie
           list that returns a single list item
           that shows the number of results
-          or "No Results FOund" */}
+          or "No Results FOund"
+          Note: ternary are mini if statements.
+          */
+          movies.length === 0 ?
+            <ListItem >
+              <ListItemText
+                primary={"No movies found."}
+              />
+            </ListItem>
+            :
+            <ListItem >
+              <ListItemText
+                primary={`${movies.length} results found`}
+              />
+            </ListItem>
+          }
 
           {
             movies.map((movieData, index)=> {
               return <ListItem key={index}>
-                <ListItemText>
-                  <Typography variant="p" component="div">
-                    {movieData.name} ({movieData.year})
-                  </Typography>
-                </ListItemText>
+                <ListItemText
+                  primary={`${movieData.name} (${movieData.year})`}
+                />
               </ListItem>
             })
           }
