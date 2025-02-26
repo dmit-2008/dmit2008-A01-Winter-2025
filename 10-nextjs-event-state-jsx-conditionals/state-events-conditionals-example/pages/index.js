@@ -36,6 +36,14 @@ export default function Home() {
       - set movies
         - filtered
   */
+  const handleForm = (event) => {
+    event.preventDefault()
+    // we're going to create a temporary list.
+    let filteredMovies = [...MOVIE_LIST]
+    //
+
+  }
+
 
 
   return (
@@ -55,7 +63,10 @@ export default function Home() {
           <Typography variant="h2" component="h2" style={{textAlign: "center"}}>
             Movies
           </Typography>
-          <form style={{width: '100%'}}>
+          <form
+            onSubmit={handleForm}
+            style={{width: '100%'}}
+          >
             <Grid container spacing={2}>
               <Grid item xs={6}>
                 {/* make this controlled
