@@ -16,12 +16,19 @@ export default function Home() {
   // makes a request to https://stoic.tekloon.net/stoic-quote to get a random quote.
   const loadRandomQuote = async () => {
     const QUOTE_URL = "https://stoic.tekloon.net/stoic-quote"
-    // let's essentially make a request here.
-    const response = await fetch(QUOTE_URL)
-    // let's parse the response from json to a js object
-    const randomQuoteData = await response.json()
+    try {
+      // let's essentially make a request here.
+      const response = await fetch(QUOTE_URL);
+      console.log(response)
+      // let's parse the response from json to a js object
+      const randomQuoteData = await response.json()
 
-    console.log(randomQuoteData)
+      console.log(randomQuoteData)
+
+    } catch (error) {
+      console.log(error)
+    }
+
   }
 
   // I want you to make essentially a stateful or values.
