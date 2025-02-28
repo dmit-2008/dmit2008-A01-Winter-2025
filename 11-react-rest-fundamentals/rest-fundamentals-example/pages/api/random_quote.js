@@ -20,9 +20,12 @@ export default function handler(req, res) {
     }
   ]
 
-  let randomIndex = 0
+  // random index
+  let randomIndex = Math.floor(Math.random()*4)
 
+  // access a random quote
   let randomQuote = allQuotes[randomIndex]
 
+  // return a status.
   res.status(200).json(randomQuote)
 }
