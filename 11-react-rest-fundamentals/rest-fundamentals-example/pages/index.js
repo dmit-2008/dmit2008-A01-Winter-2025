@@ -15,7 +15,7 @@ export default function Home() {
   // I want you to create a function that is async
   // makes a request to https://stoic.tekloon.net/stoic-quote to get a random quote.
   const loadRandomQuote = async () => {
-    const QUOTE_URL = "https://stoic.tekloon.net/stoic-quote"
+    const QUOTE_URL = "/api/random_quote"
     try {
       // let's essentially make a request here.
       const response = await fetch(QUOTE_URL);
