@@ -37,12 +37,11 @@ export default function Home() {
   // the stateful values.
   const [reviews, setReviews] = useState(MOCK_ADAPTATION_RATING)
 
+  // control the inputs.
   const [title, setTitle] = useState("")
   const [comments, setComments] = useState("")
   const [rating, setRating] = useState("1")
 
-
-  // control the inputs.
   // fetch the data.
 
 

@@ -35,6 +35,7 @@ export default function Home() {
 
     } catch (error) {
       console.log(error)
+      // should be visible to the user whenever you handle an error
     }
   }
 
