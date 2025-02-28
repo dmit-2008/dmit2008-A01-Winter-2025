@@ -22,7 +22,6 @@ export default function Home() {
     const randomQuoteData = await response.json()
 
     console.log(randomQuoteData)
-
   }
 
   // I want you to make essentially a stateful or values.
@@ -77,6 +76,7 @@ export default function Home() {
             >
               <Button
                 variant="contained"
+                onClick={loadRandomQuote}
               >
                 Get New Quote
               </Button>
