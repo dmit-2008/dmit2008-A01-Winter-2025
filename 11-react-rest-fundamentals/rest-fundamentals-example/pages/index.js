@@ -14,6 +14,11 @@ import Typography from '@mui/material/Typography';
 export default function Home() {
   // I want you to create a function that is async
   // makes a request to https://stoic.tekloon.net/stoic-quote to get a random quote.
+  const loadRandomQuote = async () => {
+    const QUOTE_URL = "https://stoic.tekloon.net/stoic-quote"
+    // let's essentially make a request here.
+    const response = await fetch()
+  }
 
   // I want you to make essentially a stateful or values.
 
