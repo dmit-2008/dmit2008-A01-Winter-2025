@@ -39,7 +39,8 @@ export default function Home() {
 
   const [title, setTitle] = useState("")
   const [comments, setComments] = useState("")
-  const [rating, setRating] = useState()
+  const [rating, setRating] = useState("1")
+
 
   // control the inputs.
   // fetch the data.
@@ -96,6 +97,10 @@ export default function Home() {
                     row
                     aria-labelledby="adaptation-rating"
                     name="rating-buttons-group"
+                    onChange={(event)=> {
+                      setRating(event.target.value)
+                    }}
+                    value={rating}
                   >
                     <FormControlLabel value="1" control={<Radio />} label="1" />
                     <FormControlLabel value="2" control={<Radio />} label="2" />
