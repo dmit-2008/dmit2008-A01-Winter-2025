@@ -1,5 +1,4 @@
-
-
+import { useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 
@@ -29,19 +28,23 @@ import TextField from '@mui/material/TextField';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
-
+const MOCK_ADAPTATION_RATING = [{
+  'title': 'Fight Club',
+  'comment': 'Great movie and book',
+  'rating': 10
+}]
 export default function Home() {
-  // I want you to do both in five minutes.
+  // the stateful values.
+  const [reviews, setReviews] = useState(MOCK_ADAPTATION_RATING)
+
+  const [title, setTitle] = useState("")
+  const [comments, setComments] = useState("")
+  const [rating, setRating] = useState()
 
   // control the inputs.
   // fetch the data.
 
 
-  const MOCK_ADAPTATION_RATING = [{
-    'title': 'Fight Club',
-    'comment': 'Great movie and book',
-    'rating': 10
-  }]
   return (
     <div>
       <Head>
