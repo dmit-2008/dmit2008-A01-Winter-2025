@@ -22,7 +22,7 @@ export default function handler(req, res) {
   ]
 
   // random index
-  let randomIndex = Math.floor(Math.random()*4)
+  let randomIndex = Math.floor(Math.random()*allQuotes.length)
 
   // access a random quote
   let randomQuote = allQuotes[randomIndex]
