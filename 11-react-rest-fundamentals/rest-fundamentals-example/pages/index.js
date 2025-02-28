@@ -14,7 +14,10 @@ import Typography from '@mui/material/Typography';
 
 export default function Home() {
   // I want you to make essentially a stateful or values.
-  const [quoteData, setQuoteData] = useState() // there's none
+  const [quoteData, setQuoteData] = useState({
+    quote: "Default quote",
+    author: "default author"
+  }) // there's none
 
   // I want you to create a function that is async
   // makes a request to https://stoic.tekloon.net/stoic-quote to get a random quote.
@@ -67,6 +70,11 @@ export default function Home() {
               pb: 6,
             }}
           >
+            {/*
+              Now that we've added this state,
+              set the original state to a default
+              or I can return early.
+            */}
             <Typography variant="h5" align="center" color="text.primary" paragraph>
               {quoteData.quote}
             </Typography>
