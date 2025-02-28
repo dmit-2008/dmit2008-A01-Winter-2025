@@ -1,3 +1,5 @@
+
+
 import Head from 'next/head'
 import Image from 'next/image'
 
@@ -28,8 +30,13 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
 
-
 export default function Home() {
+  // I want you to do both in five minutes.
+
+  // control the inputs.
+  // fetch the data.
+
+
   const MOCK_ADAPTATION_RATING = [{
     'title': 'Fight Club',
     'comment': 'Great movie and book',
@@ -122,13 +129,13 @@ export default function Home() {
                     {adaptation.rating}
                   </Avatar>
                 }
-                
+
                 title={
                   <Typography variant="body2" color="text.secondary">
                     {adaptation.title}
                   </Typography>
                 }
-                
+
               />
               <CardContent>
                 <Typography variant="body2" color="text.secondary">
