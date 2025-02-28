@@ -12,6 +12,13 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
 export default function Home() {
+  // I want you to create a function that is async
+  // makes a request to https://stoic.tekloon.net/stoic-quote to get a random quote.
+
+  // I want you to make essentially a stateful or values.
+
+  // I want you to set the values in the jsx for this quote.
+
 
 
   return (
