@@ -1,6 +1,7 @@
+
+import { useState } from "react"
+
 import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -12,6 +13,9 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
 export default function Home() {
+  // I want you to make essentially a stateful or values.
+  const [quoteData, setQuoteData] = useState() // there's none
+
   // I want you to create a function that is async
   // makes a request to https://stoic.tekloon.net/stoic-quote to get a random quote.
   const loadRandomQuote = async () => {
@@ -24,14 +28,13 @@ export default function Home() {
       const randomQuoteData = await response.json()
 
       console.log(randomQuoteData)
+      setQuoteData(randomQuoteData)
 
     } catch (error) {
       console.log(error)
     }
-
   }
 
-  // I want you to make essentially a stateful or values.
 
   // I want you to set the values in the jsx for this quote.
 
@@ -65,7 +68,7 @@ export default function Home() {
             }}
           >
             <Typography variant="h5" align="center" color="text.primary" paragraph>
-              Quote here.
+              {quoteData.quote}
             </Typography>
             <Typography
               component="h1"
@@ -74,7 +77,7 @@ export default function Home() {
               color="text.secondary"
               gutterBottom
             >
-              Author here
+              {quoteData.author}
             </Typography>
             <Box
              display="flex"
