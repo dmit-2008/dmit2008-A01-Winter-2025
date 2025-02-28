@@ -38,11 +38,7 @@ export default function Home() {
     }
   }
 
-
   // I want you to set the values in the jsx for this quote.
-
-
-
   return (
     <div>
       <Head>
