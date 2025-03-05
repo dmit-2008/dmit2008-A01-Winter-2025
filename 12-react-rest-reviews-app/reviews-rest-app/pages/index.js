@@ -72,7 +72,9 @@ export default function Home() {
     console.log("title", title)
     console.log("comments", comments)
     console.log("rating", rating)
-
+    // if you can create the fetch request to make
+    // a post to the backend
+    // set the state of reviews properly and discuss it.
 
   }
 
