@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import Head from 'next/head'
-import Image from 'next/image'
 
 import AppBar from '@mui/material/AppBar';
 import Avatar from '@mui/material/Avatar';
@@ -9,24 +8,26 @@ import Button from '@mui/material/Button';
 
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 
 import Container from '@mui/material/Container';
 
-import InputLabel from '@mui/material/InputLabel';
-import Grid from '@mui/material/Grid';
+
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import Grid from '@mui/material/Grid';
+
+import IconButton from '@mui/material/IconButton';
 
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 
-
 import TextField from '@mui/material/TextField';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const MOCK_ADAPTATION_RATING = [{
   'title': 'Fight Club',
@@ -226,7 +227,11 @@ export default function Home() {
                     {adaptation.rating}
                   </Avatar>
                 }
-
+                action={
+                  <IconButton>
+                    <DeleteIcon />
+                  </IconButton>
+                }
                 title={
                   <Typography variant="body2" color="text.secondary">
                     {adaptation.title}
