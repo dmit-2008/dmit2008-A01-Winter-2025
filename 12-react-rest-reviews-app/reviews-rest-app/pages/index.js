@@ -102,6 +102,7 @@ export default function Home() {
     setReviews([newReview, ...reviews])
     // this is the same idea as we did in state.
 
+
     // reset the form values
     resetForm()
   }
