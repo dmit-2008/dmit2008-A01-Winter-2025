@@ -43,7 +43,9 @@ export default function Home() {
   const [rating, setRating] = useState("1")
 
   // fetch the data.
-
+  // and render it on the page.
+  // with a function that will be triggered with the
+  // load button.
 
   return (
     <div>
