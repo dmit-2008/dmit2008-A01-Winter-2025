@@ -34,7 +34,7 @@ const MOCK_ADAPTATION_RATING = [{
   'rating': 10
 }]
 // because the backend is on a different domain.
-const BASE_URL = "http://localhost:3000"
+const BASE_URL = "http://localhost:5000"
 
 export default function Home() {
   // the stateful values.
