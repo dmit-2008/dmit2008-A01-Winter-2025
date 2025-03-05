@@ -53,11 +53,10 @@ export default function Home() {
     // if you're ever confused on what url you're calling
     const REVIEWS_URL = `${BASE_URL}/reviews`
     console.log(REVIEWS_URL)
+    // make the request.
     const resposne = await fetch(REVIEWS_URL)
     const data = await resposne.json()
     console.log(data)
-
-
   }
 
   return (
@@ -147,6 +146,7 @@ export default function Home() {
           >
             <Button
               variant="contained"
+              onClick={loadReviews}
             >
               Load All Current Reviews
             </Button>
