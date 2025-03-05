@@ -120,7 +120,10 @@ export default function Home() {
   }
 
   // create the delete icon
-
+  // the id is going to be backend id
+  const removeReview = (id) => {
+    console.log(`you want to remove ${id}`)
+  }
 
   return (
     <div>
@@ -228,7 +231,11 @@ export default function Home() {
                   </Avatar>
                 }
                 action={
-                  <IconButton>
+                  // adapatation is each review
+                  // we want to use the
+                  <IconButton
+                    onClick={() => removeReview(adaptation.id)}
+                  >
                     <DeleteIcon />
                   </IconButton>
                 }
