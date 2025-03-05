@@ -27,6 +27,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import TextField from '@mui/material/TextField';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
+import { create } from '@mui/material/styles/createTransitions';
 
 const MOCK_ADAPTATION_RATING = [{
   'title': 'Fight Club',
@@ -54,10 +55,25 @@ export default function Home() {
     const REVIEWS_URL = `${BASE_URL}/reviews`
     // console.log(REVIEWS_URL)
     // make the request.
-    const resposne = await fetch(REVIEWS_URL)
-    const data = await resposne.json()
+    const response = await fetch(REVIEWS_URL)
+    const data = await response.json()
     // set the reviews
     setReviews(data)
+  }
+
+  // handle form
+  const createNewReview = (event) => {
+    event.preventDefault()
+    // validate to make sure the items aren't empty
+    if (title.trim() === "" || comments.trim() === "") {
+      // if either are empty we'll return early.
+      return
+    }
+    console.log("title", title)
+    console.log("comments", comments)
+    console.log("rating", rating)
+
+
   }
 
   return (
@@ -76,7 +92,9 @@ export default function Home() {
       </AppBar>
       <main>
         <Container maxWidth="md">
-          <form>
+          <form
+            onSubmit={createNewReview}
+          >
             <Grid container spacing={3}>
               <Grid item xs={12} sm={12}>
                 <TextField
@@ -153,7 +171,10 @@ export default function Home() {
             </Button>
           </Box>
           {reviews.map((adaptation, index)=> {
-            return <Card key={index}>
+            return <Card
+              key={index}
+              sx={{marginTop: 4}}
+            >
               <CardHeader
                 avatar={
                   <Avatar sx={{ bgcolor: 'blue' }} aria-label="recipe">
