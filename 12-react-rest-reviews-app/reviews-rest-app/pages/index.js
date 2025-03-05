@@ -62,7 +62,7 @@ export default function Home() {
   }
 
   // handle form
-  const createNewReview = (event) => {
+  const createNewReview = async (event) => {
     event.preventDefault()
     // validate to make sure the items aren't empty
     if (title.trim() === "" || comments.trim() === "") {
@@ -74,8 +74,26 @@ export default function Home() {
     console.log("rating", rating)
     // if you can create the fetch request to make
     // a post to the backend
-    // set the state of reviews properly and discuss it.
+    const REVIEWS_URL = `${BASE_URL}/reviews`
+    const response = await fetch(REVIEWS_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        title: title,
+        comment: comments,
+        rating: parseInt(rating)
+        // if just make the rating a stirng,
+        // json server will still work.
+        // but on a real backend you'll need to specify
+        // the type otherwise it will break.
+      })
+    })
+    const data = await response.json()
+    console.log(data)
 
+    // set the state of reviews properly and discuss it.
   }
 
   return (
