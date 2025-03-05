@@ -102,12 +102,11 @@ export default function Home() {
     // setReviews([newReview, ...reviews])
     // this is the same idea as we did in state.
 
-    // Option 2
+    // Option 2 ( react query uses this approach )
     // talk about invalidating a request, we're going to call
     // the function that originally sets the data.
     // for us this is loadReviews
     await loadReviews()
-
 
     // reset the form values
     resetForm()
@@ -118,6 +117,8 @@ export default function Home() {
     setComments("")
     setRating("1")
   }
+
+  // create the delete icon
 
 
   return (
