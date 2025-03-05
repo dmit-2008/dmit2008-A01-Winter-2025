@@ -33,6 +33,9 @@ const MOCK_ADAPTATION_RATING = [{
   'comment': 'Great movie and book',
   'rating': 10
 }]
+// because the backend is on a different domain.
+const BASE_URL = "http://localhost:3000"
+
 export default function Home() {
   // the stateful values.
   const [reviews, setReviews] = useState(MOCK_ADAPTATION_RATING)
@@ -46,6 +49,16 @@ export default function Home() {
   // and render it on the page.
   // with a function that will be triggered with the
   // load button.
+  const loadReviews = async () => {
+    // if you're ever confused on what url you're calling
+    const REVIEWS_URL = `${BASE_URL}/reviews`
+    console.log(REVIEWS_URL)
+    const resposne = await fetch(REVIEWS_URL)
+    const data = await resposne.json()
+    console.log(data)
+
+
+  }
 
   return (
     <div>
@@ -138,7 +151,7 @@ export default function Home() {
               Load All Current Reviews
             </Button>
           </Box>
-          {MOCK_ADAPTATION_RATING.map((adaptation, index)=> {
+          {reviews.map((adaptation, index)=> {
             return <Card key={index}>
               <CardHeader
                 avatar={
