@@ -27,7 +27,6 @@ import RadioGroup from '@mui/material/RadioGroup';
 import TextField from '@mui/material/TextField';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { create } from '@mui/material/styles/createTransitions';
 
 const MOCK_ADAPTATION_RATING = [{
   'title': 'Fight Club',
@@ -75,6 +74,7 @@ export default function Home() {
     // if you can create the fetch request to make
     // a post to the backend
     const REVIEWS_URL = `${BASE_URL}/reviews`
+    // Note: wrap this in a try catch call.
     const response = await fetch(REVIEWS_URL, {
       method: "POST",
       headers: {
@@ -99,8 +99,14 @@ export default function Home() {
     // newReview is a new review in this instance
     // the first way we could do this is by setting the state
     // on the frontend
-    setReviews([newReview, ...reviews])
+    // setReviews([newReview, ...reviews])
     // this is the same idea as we did in state.
+
+    // Option 2
+    // talk about invalidating a request, we're going to call
+    // the function that originally sets the data.
+    // for us this is loadReviews
+    await loadReviews()
 
 
     // reset the form values

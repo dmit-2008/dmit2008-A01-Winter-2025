@@ -23,6 +23,12 @@
       "comment": "Blade runner was great, the book hmm",
       "rating": "9",
       "id": 4
+    },
+    {
+      "title": "The man in the high castle",
+      "comment": "book was less good than the show.",
+      "rating": 8,
+      "id": 5
     }
   ]
 }
