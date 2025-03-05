@@ -90,11 +90,28 @@ export default function Home() {
         // the type otherwise it will break.
       })
     })
-    const data = await response.json()
-    console.log(data)
+    const newReview = await response.json()
+    console.log(newReview)
 
     // set the state of reviews properly and discuss it.
+
+    // Option 1.
+    // newReview is a new review in this instance
+    // the first way we could do this is by setting the state
+    // on the frontend
+    setReviews([newReview, ...reviews])
+    // this is the same idea as we did in state.
+
+    // reset the form values
+    resetForm()
   }
+
+  const resetForm = () => {
+    setTitle("")
+    setComments("")
+    setRating("1")
+  }
+
 
   return (
     <div>
