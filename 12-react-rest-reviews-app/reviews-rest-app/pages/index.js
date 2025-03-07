@@ -68,11 +68,18 @@ export default function Home() {
     // if you can create the fetch request to make
     // a post to the backend
     try {
-      const newReview = await postReview({
+      // const newReview = await postReview({
+      //   title: title,
+      //   comments: comments,
+      //   rating, rating
+      // })
+      // the learned exercise
+      const newReview = reviewsAPI.post({
         title: title,
         comments: comments,
-        rating, rating
+        rating: rating
       })
+
       // set the state of reviews properly and discuss it.
 
       // Option 1.

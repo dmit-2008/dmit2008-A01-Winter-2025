@@ -17,6 +17,18 @@
       "comment": "TIMOTHY CHALAMET",
       "rating": 8,
       "id": 6
+    },
+    {
+      "title": "Alice in wonderland",
+      "comment": "NO",
+      "rating": 3,
+      "id": 7
+    },
+    {
+      "title": "Pinoccio (don't judge me)",
+      "comment": "One was good one was bad",
+      "rating": 8,
+      "id": 8
     }
   ]
 }
