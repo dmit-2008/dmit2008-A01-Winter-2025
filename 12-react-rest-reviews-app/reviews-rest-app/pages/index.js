@@ -144,15 +144,20 @@ export default function Home() {
       // update frontend
       // we have the same options as the post request
       // we have those same options
-      // Option 1 same as above
+      // Option 1 filterign state on the frontend
       // we'll filter through the id.
-      let currentReviews = reviews.filter((review) => {
-        // he's if you're the id that we're trying to delete
-        // you're not in.
-        return review.id !== id
-      })
-      console.log(currentReviews)
-      setReviews(currentReviews)
+      // let currentReviews = reviews.filter((review) => {
+      //   // he's if you're the id that we're trying to delete
+      //   // you're not in.
+      //   return review.id !== id
+      // })
+      // console.log(currentReviews)
+      // setReviews(currentReviews)
+
+      // Option 2: refetching/refreshing the data.
+      // this is just calling our loadReviews
+      await loadReviews()
+
     } catch (error) {
       // we'll display errors to the user in a bit here.
       console.log(error)
