@@ -29,7 +29,7 @@ import Typography from '@mui/material/Typography';
 
 import DeleteIcon from '@mui/icons-material/Delete';
 
-import { getReviews, postReview } from '../utils/api/reviews';
+import { getReviews, postReview, deleteReview } from '../utils/api/reviews';
 // learned exercise
 import reviewsAPI from '../utils/api/reviewsAPIAsObject';
 
@@ -118,25 +118,12 @@ export default function Home() {
     const DELETE_URL = `${BASE_URL}/reviews/${id}`
     console.log(DELETE_URL)
     try {
-      const response = await fetch(DELETE_URL, {
-        method: "DELETE"
-      })
-      console.log(response)
-      // what this does is that it checks to see
-      // if the status is ok which means it's in the 200s range
-      // if it's not okay normally if it's not throwing an error
-      // and it's not okay this means it's a 400s
-      if (!response.ok) {
-        throw Error("no found")
-      }
-      // don't like this? take a look axios, you can do it.
-
-      const data = await response.json()
+      const data = await deleteReview(id)
       console.log(data)
       // update frontend
       // we have the same options as the post request
       // we have those same options
-      // Option 1 filterign state on the frontend
+      // Option 1 filtering state on the frontend
       // we'll filter through the id.
       // let currentReviews = reviews.filter((review) => {
       //   // he's if you're the id that we're trying to delete
@@ -145,7 +132,6 @@ export default function Home() {
       // })
       // console.log(currentReviews)
       // setReviews(currentReviews)
-
       // Option 2: refetching/refreshing the data.
       // this is just calling our loadReviews
       await loadReviews()
@@ -154,10 +140,11 @@ export default function Home() {
       // we'll display errors to the user in a bit here.
       console.log(error)
     }
-
-
-
   }
+
+  // put the form in it's component
+  // know what props are needed and what state needs
+  // to be in that component vs this component.
 
   return (
     <div>
