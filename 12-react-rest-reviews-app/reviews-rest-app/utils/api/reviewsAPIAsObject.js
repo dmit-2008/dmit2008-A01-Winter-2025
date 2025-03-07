@@ -4,7 +4,7 @@ const BASE_URL = "http://localhost:5000"
 
 // this is an object but we could make this a class
 // that's initialized.
-const reviews = {
+const reviewsAPI = {
   // below would be called with reviews.get()
   get: async function() {
     const REVIEWS_URL = `${BASE_URL}/reviews`
@@ -25,5 +25,5 @@ const reviews = {
 
 // for this example we would use export default
 
-export default reviews
+export default reviewsAPI
 

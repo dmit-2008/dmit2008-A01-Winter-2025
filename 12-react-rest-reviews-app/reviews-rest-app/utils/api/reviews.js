@@ -20,6 +20,8 @@ const getReviews = async () => {
   return data
 }
 
+// do the post and do the delete requests
+// you can do it on both
 
 // put all of my exports at the bottom
 export { getReviews }

@@ -29,7 +29,9 @@ import Typography from '@mui/material/Typography';
 
 import DeleteIcon from '@mui/icons-material/Delete';
 
-import { getReviews } from '../utils/api/reviews';
+// import { getReviews } from '../utils/api/reviews';
+// learned exercise
+import reviewsAPI from '../utils/api/reviewsAPIAsObject';
 
 // because the backend is on a different domain.
 const BASE_URL = "http://localhost:5000"
@@ -48,7 +50,9 @@ export default function Home() {
   // with a function that will be triggered with the
   // load button.
   const loadReviews = async () => {
-    const data = await getReviews()
+    // const data = await getReviews()
+    // learned exercise
+    const data = await reviewsAPI.get()
     // set the reviews
     setReviews(data)
   }
