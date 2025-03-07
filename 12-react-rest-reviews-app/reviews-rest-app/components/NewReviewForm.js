@@ -1,3 +1,16 @@
+import {useState} from 'react'
+
+import Button from '@mui/material/Button';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Grid from '@mui/material/Grid';
+
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+
+import TextField from '@mui/material/TextField';
+
 
 import { postReview } from '../utils/api/reviews';
 
@@ -5,7 +18,14 @@ import { postReview } from '../utils/api/reviews';
 import reviewsAPI from '../utils/api/reviewsAPIAsObject';
 
 
-export default function NewReviewForm () {
+export default function NewReviewForm ({
+  //this and the line below will need to be used if you
+  // if you use option 1 on rendering
+  reviews,
+  setReviews,
+  // if we use option 2 on rendering
+  loadReviews
+}) {
 
   // control the inputs.
   const [title, setTitle] = useState("")
