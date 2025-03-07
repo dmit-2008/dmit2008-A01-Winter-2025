@@ -67,40 +67,29 @@ export default function Home() {
     }
     // if you can create the fetch request to make
     // a post to the backend
-    const REVIEWS_URL = `${BASE_URL}/reviews`
-    // Note: wrap this in a try catch call.
-    const response = await fetch(REVIEWS_URL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
+    try {
+      const newReview = await postReview({
         title: title,
-        comment: comments,
-        rating: parseInt(rating)
-        // if just make the rating a stirng,
-        // json server will still work.
-        // but on a real backend you'll need to specify
-        // the type otherwise it will break.
+        comments: comments,
+        rating, rating
       })
-    })
-    const newReview = await response.json()
-    console.log(newReview)
+      // set the state of reviews properly and discuss it.
 
-    // set the state of reviews properly and discuss it.
+      // Option 1.
+      // newReview is a new review in this instance
+      // the first way we could do this is by setting the state
+      // on the frontend
+      // setReviews([newReview, ...reviews])
+      // this is the same idea as we did in state.
 
-    // Option 1.
-    // newReview is a new review in this instance
-    // the first way we could do this is by setting the state
-    // on the frontend
-    // setReviews([newReview, ...reviews])
-    // this is the same idea as we did in state.
-
-    // Option 2 ( react query uses this approach )
-    // talk about invalidating a request, we're going to call
-    // the function that originally sets the data.
-    // for us this is loadReviews
-    await loadReviews()
+      // Option 2 ( react query uses this approach )
+      // talk about invalidating a request, we're going to call
+      // the function that originally sets the data.
+      // for us this is loadReviews
+      await loadReviews()
+    } catch(error) {
+      // handle this error
+    }
 
     // reset the form values
     resetForm()
