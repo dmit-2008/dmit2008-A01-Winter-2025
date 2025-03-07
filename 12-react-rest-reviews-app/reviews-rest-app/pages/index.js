@@ -29,17 +29,14 @@ import Typography from '@mui/material/Typography';
 
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const MOCK_ADAPTATION_RATING = [{
-  'title': 'Fight Club',
-  'comment': 'Great movie and book',
-  'rating': 10
-}]
+import { getReviews } from '../utils/api/reviews';
+
 // because the backend is on a different domain.
 const BASE_URL = "http://localhost:5000"
 
 export default function Home() {
   // the stateful values.
-  const [reviews, setReviews] = useState(MOCK_ADAPTATION_RATING)
+  const [reviews, setReviews] = useState([])
 
   // control the inputs.
   const [title, setTitle] = useState("")
@@ -51,12 +48,7 @@ export default function Home() {
   // with a function that will be triggered with the
   // load button.
   const loadReviews = async () => {
-    // if you're ever confused on what url you're calling
-    const REVIEWS_URL = `${BASE_URL}/reviews`
-    // console.log(REVIEWS_URL)
-    // make the request.
-    const response = await fetch(REVIEWS_URL)
-    const data = await response.json()
+    const data = await getReviews()
     // set the reviews
     setReviews(data)
   }
