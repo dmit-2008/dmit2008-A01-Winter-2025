@@ -123,12 +123,41 @@ export default function Home() {
     // implement the delete
 
     // delete from backend
-    const DELETE_URL = `${BASE_url}/reviews/${id}`
+    const DELETE_URL = `${BASE_URL}/reviews/${id}`
     console.log(DELETE_URL)
-    // const response = await fetch(DELETE_URL)
+    try {
+      const response = await fetch(DELETE_URL, {
+        method: "DELETE"
+      })
+      console.log(response)
+      // what this does is that it checks to see
+      // if the status is ok which means it's in the 200s range
+      // if it's not okay normally if it's not throwing an error
+      // and it's not okay this means it's a 400s
+      if (!response.ok) {
+        throw Error("no found")
+      }
+      // don't like this? take a look axios, you can do it.
 
+      const data = await response.json()
+      console.log(data)
+      // update frontend
+      // we have the same options as the post request
+      // we have those same options
+      // Option 1 same as above
+      // we'll filter through the id.
+      let currentReviews = reviews.filter((review) => {
+        // he's if you're the id that we're trying to delete
+        // you're not in.
+        return review.id !== id
+      })
+      console.log(currentReviews)
+      setReviews(currentReviews)
+    } catch (error) {
+      // we'll display errors to the user in a bit here.
+      console.log(error)
+    }
 
-    // update frontend
 
 
   }
