@@ -69,9 +69,6 @@ export default function Home() {
       // if either are empty we'll return early.
       return
     }
-    console.log("title", title)
-    console.log("comments", comments)
-    console.log("rating", rating)
     // if you can create the fetch request to make
     // a post to the backend
     const REVIEWS_URL = `${BASE_URL}/reviews`
@@ -123,6 +120,8 @@ export default function Home() {
   // the id is going to be backend id
   const removeReview = (id) => {
     console.log(`you want to remove ${id}`)
+    // implement the delete
+
   }
 
   return (
