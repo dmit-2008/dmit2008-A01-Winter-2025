@@ -38,8 +38,24 @@ const reviewsAPI = {
     return newReview
   },
 
-  delete: async function() {
+  delete: async function(id) {
+    const DELETE_URL = `${BASE_URL}/reviews/${id}`
 
+    const response = await fetch(DELETE_URL, {
+      method: "DELETE"
+    })
+    console.log(response)
+    // what this does is that it checks to see
+    // if the status is ok which means it's in the 200s range
+    // if it's not okay normally if it's not throwing an error
+    // and it's not okay this means it's a 400s
+    if (!response.ok) {
+      throw Error("no found")
+    }
+    // don't like this? take a look axios, you can do it.
+
+    const data = await response.json()
+    return data
   }
 }
 
