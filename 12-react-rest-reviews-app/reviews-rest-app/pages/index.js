@@ -29,7 +29,7 @@ import Typography from '@mui/material/Typography';
 
 import DeleteIcon from '@mui/icons-material/Delete';
 
-// import { getReviews } from '../utils/api/reviews';
+import { getReviews, postReview } from '../utils/api/reviews';
 // learned exercise
 import reviewsAPI from '../utils/api/reviewsAPIAsObject';
 

@@ -22,6 +22,30 @@ const getReviews = async () => {
 
 // do the post and do the delete requests
 // you can do it on both
+const postReview = async ({title, rating, comments}) => {
+  // a post to the backend
+  const REVIEWS_URL = `${BASE_URL}/reviews`
+  // Note: wrap this in a try catch call.
+  const response = await fetch(REVIEWS_URL, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      title: title,
+      comment: comments,
+      rating: parseInt(rating)
+      // if just make the rating a stirng,
+      // json server will still work.
+      // but on a real backend you'll need to specify
+      // the type otherwise it will break.
+    })
+  })
+  const newReview = await response.json()
+
+  return newReview
+}
+
 
 // put all of my exports at the bottom
-export { getReviews }
+export { getReviews, postReview }
