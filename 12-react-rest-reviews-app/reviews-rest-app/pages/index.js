@@ -118,9 +118,18 @@ export default function Home() {
 
   // create the delete icon
   // the id is going to be backend id
-  const removeReview = (id) => {
+  const removeReview = async (id) => {
     console.log(`you want to remove ${id}`)
     // implement the delete
+
+    // delete from backend
+    const DELETE_URL = `${BASE_url}/reviews/${id}`
+    console.log(DELETE_URL)
+    // const response = await fetch(DELETE_URL)
+
+
+    // update frontend
+
 
   }
 
