@@ -9,6 +9,7 @@ import Container from '@mui/material/Container';
 import Navbar from '../components/Navbar';
 import NewReviewForm from '../components/NewReviewForm';
 import ReviewCard from '../components/ReviewCard';
+import ReviewsList from '../components/ReviewsList';
 
 import { deleteReview } from '../utils/api/reviews';
 // learned exercise
@@ -63,33 +64,11 @@ export default function Home() {
               Load All Current Reviews
             </Button>
           </Box>
-          {reviews.map((adaptation)=> {
-            // we remove the old card and change it
-            // with our new component.
-            return <ReviewCard
-              key={adaptation.id}
-              rating={adaptation.rating}
-              id={adaptation.id}
-              title={adaptation.title}
-              comment={adaptation.comment}
-
-              reviews={reviews}
-              setReviews={setReviews}
-              loadReviews={loadReviews}
-            />
-            // a slightly different way of writing
-            // the above. what we can do is spread
-            // the object of adaptation as props.
-            // return <ReviewCard
-            //   key={adaptation.id}
-            //   {...adaptation}
-            //   reviews={reviews}
-            //   setReviews={setReviews}
-            //   loadReviews={loadReviews}
-            // />
-
-          })}
-
+          <ReviewsList
+            reviews={reviews}
+            setReviews={setReviews}
+            loadReviews={loadReviews}
+          />
         </Container>
       </main>
     </div>
