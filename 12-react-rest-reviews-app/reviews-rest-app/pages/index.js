@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import Head from 'next/head'
 
-import AppBar from '@mui/material/AppBar';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -11,20 +10,8 @@ import CardHeader from '@mui/material/CardHeader';
 import CardContent from '@mui/material/CardContent';
 
 import Container from '@mui/material/Container';
-
-
-import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Grid from '@mui/material/Grid';
-
 import IconButton from '@mui/material/IconButton';
 
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-
-import TextField from '@mui/material/TextField';
-import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -43,11 +30,6 @@ export default function Home() {
   // the stateful values.
   const [reviews, setReviews] = useState([])
 
-  // control the inputs.
-  const [title, setTitle] = useState("")
-  const [comments, setComments] = useState("")
-  const [rating, setRating] = useState("1")
-
   // fetch the data.
   // and render it on the page.
   // with a function that will be triggered with the
@@ -58,57 +40,6 @@ export default function Home() {
     const data = await reviewsAPI.get()
     // set the reviews
     setReviews(data)
-  }
-
-  // handle form
-  const createNewReview = async (event) => {
-    event.preventDefault()
-    // validate to make sure the items aren't empty
-    if (title.trim() === "" || comments.trim() === "") {
-      // if either are empty we'll return early.
-      return
-    }
-    // if you can create the fetch request to make
-    // a post to the backend
-    try {
-      // const newReview = await postReview({
-      //   title: title,
-      //   comments: comments,
-      //   rating, rating
-      // })
-      // the learned exercise
-      const newReview = reviewsAPI.post({
-        title: title,
-        comments: comments,
-        rating: rating
-      })
-
-      // set the state of reviews properly and discuss it.
-
-      // Option 1.
-      // newReview is a new review in this instance
-      // the first way we could do this is by setting the state
-      // on the frontend
-      // setReviews([newReview, ...reviews])
-      // this is the same idea as we did in state.
-
-      // Option 2 ( react query uses this approach )
-      // talk about invalidating a request, we're going to call
-      // the function that originally sets the data.
-      // for us this is loadReviews
-      await loadReviews()
-    } catch(error) {
-      // handle this error
-    }
-
-    // reset the form values
-    resetForm()
-  }
-
-  const resetForm = () => {
-    setTitle("")
-    setComments("")
-    setRating("1")
   }
 
   // create the delete icon
