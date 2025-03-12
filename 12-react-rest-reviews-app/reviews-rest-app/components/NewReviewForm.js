@@ -12,6 +12,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import TextField from '@mui/material/TextField';
 
 
+// if we're going to use the other post function we'll need this.
 import { postReview } from '../utils/api/reviews';
 
 // learned exercise
@@ -48,7 +49,7 @@ export default function NewReviewForm ({
       //   rating, rating
       // })
       // the learned exercise
-      const newReview = reviewsAPI.post({
+      const newReview = await reviewsAPI.post({
         title: title,
         comments: comments,
         rating: rating
@@ -68,12 +69,19 @@ export default function NewReviewForm ({
       // the function that originally sets the data.
       // for us this is loadReviews
       await loadReviews()
+      // reset the form values
+      resetForm()
     } catch(error) {
       // handle this error
+      console.error(error)
     }
 
-    // reset the form values
-    resetForm()
+  }
+
+  const resetForm = () => {
+    setTitle("")
+    setComments("")
+    setRating("1")
   }
 
   return <form

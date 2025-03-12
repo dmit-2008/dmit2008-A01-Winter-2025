@@ -30,6 +30,7 @@ import Typography from '@mui/material/Typography';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import Navbar from '../components/Navbar';
+import NewReviewForm from '../components/NewReviewForm';
 
 import { getReviews, postReview, deleteReview } from '../utils/api/reviews';
 // learned exercise
@@ -156,71 +157,11 @@ export default function Home() {
       <Navbar />
       <main>
         <Container maxWidth="md">
-          <form
-            onSubmit={createNewReview}
-          >
-            <Grid container spacing={3}>
-              <Grid item xs={12} sm={12}>
-                <TextField
-                  id="title"
-                  name="title"
-                  label="Adaptation Title"
-                  fullWidth
-                  variant="standard"
-                  value={title}
-                  onChange={(event)=> {
-                    setTitle(event.target.value)
-                  }}
-                />
-              </Grid>
-              <Grid item xs={12} sm={12}>
-                <TextField
-                  id="review-comments"
-                  name="review-comments"
-                  label="Comments"
-                  fullWidth
-                  variant="standard"
-                  value={comments}
-                  onChange={(event)=> {
-                    setComments(event.target.value)
-                  }}
-                />
-              </Grid>
-              <Grid item xs={12} sm={12}>
-                <FormControl>
-                  <FormLabel id="adaptation-rating">Rating</FormLabel>
-                  <RadioGroup
-                    row
-                    aria-labelledby="adaptation-rating"
-                    name="rating-buttons-group"
-                    onChange={(event)=> {
-                      setRating(event.target.value)
-                    }}
-                    value={rating}
-                  >
-                    <FormControlLabel value="1" control={<Radio />} label="1" />
-                    <FormControlLabel value="2" control={<Radio />} label="2" />
-                    <FormControlLabel value="3" control={<Radio />} label="3" />
-                    <FormControlLabel value="4" control={<Radio />} label="4" />
-                    <FormControlLabel value="5" control={<Radio />} label="5" />
-                    <FormControlLabel value="6" control={<Radio />} label="6" />
-                    <FormControlLabel value="7" control={<Radio />} label="7" />
-                    <FormControlLabel value="8" control={<Radio />} label="8" />
-                    <FormControlLabel value="9" control={<Radio />} label="9" />
-                    <FormControlLabel value="10" control={<Radio />} label="10" />
-                  </RadioGroup>
-               </FormControl>
-              </Grid>
-              <Grid item xs={12} sm={12}>
-                <Button
-                  variant="contained"
-                  type="submit"
-                >
-                  Add New Review
-                </Button>
-              </Grid>
-            </Grid>
-          </form>
+          <NewReviewForm
+            reviews={reviews}
+            setReviews={setReviews}
+            loadReviews={loadReviews}
+          />
           <Box
             sx={{
               pt: 2,
