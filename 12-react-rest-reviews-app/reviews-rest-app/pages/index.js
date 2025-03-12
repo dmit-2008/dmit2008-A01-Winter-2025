@@ -1,30 +1,19 @@
 import { useState } from 'react'
 import Head from 'next/head'
 
-import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
-import Card from '@mui/material/Card';
-import CardHeader from '@mui/material/CardHeader';
-import CardContent from '@mui/material/CardContent';
-
 import Container from '@mui/material/Container';
-import IconButton from '@mui/material/IconButton';
-
-import Typography from '@mui/material/Typography';
-
-import DeleteIcon from '@mui/icons-material/Delete';
 
 import Navbar from '../components/Navbar';
 import NewReviewForm from '../components/NewReviewForm';
+import ReviewCard from '../components/ReviewCard';
 
-import { getReviews, postReview, deleteReview } from '../utils/api/reviews';
+import { deleteReview } from '../utils/api/reviews';
 // learned exercise
 import reviewsAPI from '../utils/api/reviewsAPIAsObject';
 
-// because the backend is on a different domain.
-const BASE_URL = "http://localhost:5000"
 
 export default function Home() {
   // the stateful values.
@@ -40,38 +29,6 @@ export default function Home() {
     const data = await reviewsAPI.get()
     // set the reviews
     setReviews(data)
-  }
-
-  // create the delete icon
-  // the id is going to be backend id
-  const removeReview = async (id) => {
-    console.log(`you want to remove ${id}`)
-    // implement the delete
-
-    // delete from backend
-    try {
-      const data = await deleteReview(id)
-      console.log(data)
-      // update frontend
-      // we have the same options as the post request
-      // we have those same options
-      // Option 1 filtering state on the frontend
-      // we'll filter through the id.
-      // let currentReviews = reviews.filter((review) => {
-      //   // he's if you're the id that we're trying to delete
-      //   // you're not in.
-      //   return review.id !== id
-      // })
-      // console.log(currentReviews)
-      // setReviews(currentReviews)
-      // Option 2: refetching/refreshing the data.
-      // this is just calling our loadReviews
-      await loadReviews()
-
-    } catch (error) {
-      // we'll display errors to the user in a bit here.
-      console.log(error)
-    }
   }
 
   // put the form in it's component
@@ -106,39 +63,31 @@ export default function Home() {
               Load All Current Reviews
             </Button>
           </Box>
-          {reviews.map((adaptation, index)=> {
-            return <Card
-              key={index}
-              sx={{marginTop: 4}}
-            >
-              <CardHeader
-                avatar={
-                  <Avatar sx={{ bgcolor: 'blue' }} aria-label="recipe">
-                    {adaptation.rating}
-                  </Avatar>
-                }
-                action={
-                  // adapatation is each review
-                  // we want to use the
-                  <IconButton
-                    onClick={() => removeReview(adaptation.id)}
-                  >
-                    <DeleteIcon />
-                  </IconButton>
-                }
-                title={
-                  <Typography variant="body2" color="text.secondary">
-                    {adaptation.title}
-                  </Typography>
-                }
+          {reviews.map((adaptation)=> {
+            // we remove the old card and change it
+            // with our new component.
+            return <ReviewCard
+              key={adaptation.id}
+              rating={adaptation.rating}
+              id={adaptation.id}
+              title={adaptation.title}
+              comment={adaptation.comment}
 
-              />
-              <CardContent>
-                <Typography variant="body2" color="text.secondary">
-                  {adaptation.comment}
-                </Typography>
-              </CardContent>
-            </Card>
+              reviews={reviews}
+              setReviews={setReviews}
+              loadReviews={loadReviews}
+            />
+            // a slightly different way of writing
+            // the above. what we can do is spread
+            // the object of adaptation as props.
+            // return <ReviewCard
+            //   key={adaptation.id}
+            //   {...adaptation}
+            //   reviews={reviews}
+            //   setReviews={setReviews}
+            //   loadReviews={loadReviews}
+            // />
+
           })}
 
         </Container>
