@@ -42,8 +42,11 @@ export default function Home() {
   // I want you to try to useEffect on mount and load the quote.
   useEffect(()=> {
     console.log("On Mount")
-
-
+    // your useEFfects can't be asynchronous but it can call those functions
+    // if you don't use the result.
+    // we're using loadRandomQuote is going to set the state in that function
+    // we just want to call it, nothing is returned so it's all good.
+    loadRandomQuote()
   }, [])
   // important note, do not ever have an effect without a dependency array.
   // it's just going break your application.
