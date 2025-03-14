@@ -39,6 +39,10 @@ export default function Home() {
     }
   }
 
+  // I want you to try to useEffect on mount and load the quote.
+
+
+
   // I want you to set the values in the jsx for this quote.
   return (
     <div>
