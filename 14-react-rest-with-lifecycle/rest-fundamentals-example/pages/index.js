@@ -64,7 +64,11 @@ export default function Home() {
   // react strict mode, or in the future if you're just making a rest api call
   // going to a library like react query is probably a better choice.
 
-
+  // a good way to handle the loading
+  // is to retrun early in this function
+  if (isLoading) {
+    return "Loading ..."
+  }
 
 
 
