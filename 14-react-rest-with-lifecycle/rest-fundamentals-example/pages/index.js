@@ -7,6 +7,7 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
+import CircularProgress from "@mui/material/CircularProgress";
 import Container from '@mui/material/Container';
 
 import Toolbar from '@mui/material/Toolbar';
@@ -67,7 +68,19 @@ export default function Home() {
   // a good way to handle the loading
   // is to retrun early in this function
   if (isLoading) {
-    return "Loading ..."
+    // we're going return
+    return <>
+      <AppBar position="relative">
+        <Toolbar>
+          <Typography variant="h6" color="inherit" noWrap>
+            We Love Quotes
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <Box sx={{ display: 'flex' }}>
+        <CircularProgress />
+      </Box>
+    </>
   }
 
 
