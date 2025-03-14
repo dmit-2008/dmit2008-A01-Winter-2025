@@ -36,5 +36,8 @@ export default async function handler(req, res) {
   // add sleep to ephasize loading
   await sleep(2000)
   // return a status.
-  res.status(200).json(randomQuote)
+  // res.status(200).json(randomQuote)
+
+  // so that we can display the error
+  res.status(500).json({name: "borked"})
 }

@@ -17,6 +17,8 @@ export default function Home() {
   // let's make a stateful value for the loading state
   // make the original false
   const [isLoading, setIsLoading] = useState(false)
+  // get the error message here.
+  const [error, setError] = useState("")
 
 
   // I want you to make essentially a stateful or values.
@@ -43,9 +45,12 @@ export default function Home() {
       setQuoteData(randomQuoteData)
       // once returned we are going to setIsLoading to false.
       setIsLoading(false)
+      // set the error to empty
     } catch (error) {
       console.log(error)
       // should be visible to the user whenever you handle an error
+      setIsLoading(false)
+      setError()
     }
   }
 
@@ -83,6 +88,22 @@ export default function Home() {
     </>
   }
 
+  // handle the error
+  if (error !== "") {
+    return <>
+      <AppBar position="relative">
+        <Toolbar>
+          <Typography variant="h6" color="inherit" noWrap>
+            We Love Quotes
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <Typography variant="h6" color="danger" noWrap>
+
+
+      </Typography>
+    </>
+  }
 
 
   // I want you to set the values in the jsx for this quote.
