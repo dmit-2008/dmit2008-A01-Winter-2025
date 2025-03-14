@@ -40,6 +40,11 @@ export default function Home() {
       console.log(response)
       // let's parse the response from json to a js object
       const randomQuoteData = await response.json()
+      // add this line to check if it's not okay.
+      if (!response.ok) {
+        // I'm throwing an error if there is none.
+        throw Error(randomQuoteData)
+      }
 
       console.log(randomQuoteData)
       setQuoteData(randomQuoteData)
@@ -47,10 +52,14 @@ export default function Home() {
       setIsLoading(false)
       // set the error to empty
     } catch (error) {
+      console.log("here in catching")
       console.log(error)
       // should be visible to the user whenever you handle an error
       setIsLoading(false)
-      setError()
+      setError(error.name)
+      // for error.name refer to the
+      // api/random quote and uncomment the
+      // error lines
     }
   }
 
@@ -99,8 +108,7 @@ export default function Home() {
         </Toolbar>
       </AppBar>
       <Typography variant="h6" color="danger" noWrap>
-
-
+        An error has occurred: {error}
       </Typography>
     </>
   }
