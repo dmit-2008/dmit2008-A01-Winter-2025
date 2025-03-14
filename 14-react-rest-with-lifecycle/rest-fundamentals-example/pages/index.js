@@ -1,5 +1,5 @@
-
-import { useState } from "react"
+// step one is to import useEffect from react here.
+import { useState, useEffect } from "react"
 
 import Head from 'next/head'
 
@@ -40,7 +40,17 @@ export default function Home() {
   }
 
   // I want you to try to useEffect on mount and load the quote.
+  useEffect(()=> {
+    console.log("On Mount")
 
+
+  }, [])
+  // important note, do not ever have an effect without a dependency array.
+  // it's just going break your application.
+  // Next note: If in this next.config.js it's in strict mode what happens is
+  // that the effect is called twice. This is a bit of a gotcha, you can turn off
+  // react strict mode, or in the future if you're just making a rest api call
+  // going to a library like react query is probably a better choice.
 
 
   // I want you to set the values in the jsx for this quote.
