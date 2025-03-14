@@ -13,6 +13,11 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
 export default function Home() {
+  // let's make a stateful value for the loading state
+  // make the original false
+  const [isLoading, setIsLoading] = useState(false)
+
+
   // I want you to make essentially a stateful or values.
   const [quoteData, setQuoteData] = useState({
     quote: "Default quote",
@@ -23,7 +28,10 @@ export default function Home() {
   // makes a request to https://stoic.tekloon.net/stoic-quote to get a random quote.
   const loadRandomQuote = async () => {
     const QUOTE_URL = "/api/random_quote"
+    // when we're making the request
     try {
+      // before the request is made we're going to set this to loading.
+      setIsLoading(true)
       // let's essentially make a request here.
       const response = await fetch(QUOTE_URL);
       console.log(response)
@@ -32,7 +40,8 @@ export default function Home() {
 
       console.log(randomQuoteData)
       setQuoteData(randomQuoteData)
-
+      // once returned we are going to setIsLoading to false.
+      setIsLoading(false)
     } catch (error) {
       console.log(error)
       // should be visible to the user whenever you handle an error
@@ -54,6 +63,9 @@ export default function Home() {
   // that the effect is called twice. This is a bit of a gotcha, you can turn off
   // react strict mode, or in the future if you're just making a rest api call
   // going to a library like react query is probably a better choice.
+
+
+
 
 
   // I want you to set the values in the jsx for this quote.
