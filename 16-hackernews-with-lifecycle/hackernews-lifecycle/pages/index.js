@@ -1,6 +1,8 @@
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 
+import TopStoriesList from '@/components/TopStoriesList';
+
 export default function Home() {
   return (
     <div>
@@ -8,6 +10,7 @@ export default function Home() {
         <Typography component="h1" variant="h5">
           Top Hacker News Stories
         </Typography>
+        <TopStoriesList />
       </Container>
     </div>
   );
