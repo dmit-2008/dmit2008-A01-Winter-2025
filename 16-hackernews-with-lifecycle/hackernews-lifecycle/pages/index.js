@@ -1,0 +1,14 @@
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+
+export default function Home() {
+  return (
+    <div>
+      <Container maxWidth="md" component={"main"}>
+        <Typography component="h1" variant="h5">
+          Top HackerNews Stories
+        </Typography>
+      </Container>
+    </div>
+  );
+}
