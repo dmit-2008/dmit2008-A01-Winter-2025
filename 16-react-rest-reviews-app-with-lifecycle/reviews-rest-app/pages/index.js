@@ -1,4 +1,5 @@
-import { useState } from 'react'
+// import useEffect
+import { useState, useEffect } from 'react'
 import Head from 'next/head'
 
 import Box from '@mui/material/Box';
@@ -19,15 +20,19 @@ import reviewsAPI from '../utils/api/reviewsAPIAsObject';
 export default function Home() {
   // the stateful values.
   const [reviews, setReviews] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
 
   // fetch the data.
   // and render it on the page.
   // with a function that will be triggered with the
   // load button.
   const loadReviews = async () => {
-    // const data = await getReviews()
+    // Note: we should deal with an error state but we're not right now.
+    setIsLoading(true) // we're loading here.
     // learned exercise
     const data = await reviewsAPI.get()
+
+    setIsLoading(false) // because it's fetched.
     // set the reviews
     setReviews(data)
   }
@@ -37,7 +42,6 @@ export default function Home() {
   // show circular progress on the reviews section when it's loading.
   // maybe think a ternary
   // I want you to load the reviews in an effect on mount.
-
 
   return (
     <div>
