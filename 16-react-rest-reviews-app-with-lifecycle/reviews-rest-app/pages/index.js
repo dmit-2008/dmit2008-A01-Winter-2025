@@ -32,9 +32,12 @@ export default function Home() {
     setReviews(data)
   }
 
-  // put the form in it's component
-  // know what props are needed and what state needs
-  // to be in that component vs this component.
+  // I want you to disable strict mode
+  // I want you to essentially create a loading state
+  // show circular progress on the reviews section when it's loading.
+  // maybe think a ternary
+  // I want you to load the reviews in an effect on mount.
+
 
   return (
     <div>
