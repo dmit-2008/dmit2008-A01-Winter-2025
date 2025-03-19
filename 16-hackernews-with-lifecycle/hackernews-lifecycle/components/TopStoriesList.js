@@ -4,11 +4,15 @@ import Button from "@mui/material/Button"
 
 
 export default function TopStoriesList() {
+  const SLICE_SIZE = 5
   // state
     // one for the entirety
     // one for the "rendered list"
   const [isLoading, setIsLoading] = useState(false)
   const [allStories, setAllStories] = useState()
+  // let's make a paginator that's increase the slice size
+  const [page, setPage] = useState(1) // multplied by five and use slice.
+
 
   const loadAllStories = async () => {
     setIsLoading(true)
@@ -29,7 +33,6 @@ export default function TopStoriesList() {
 
   }, []) // [] on mount because we're not in a cleanup function
 
-
   // if you're lazy like dan and you don't want to look at
   // the component profile  you can actually see all of the changes
   // of a stateful
@@ -37,14 +40,23 @@ export default function TopStoriesList() {
     console.log(allStories)
   }, [allStories]) // watch for any changes in all stories
 
+  // handle the loading state by display a loading
+  if (isLoading) {
+    return "Loading..." // fix make nicer later.
+  }
 
 
   return <>
     {
       // a list of Story components that will have
       // a prop of id.
+      allStories.slice(0, page*SLICE_SIZE).map((storyId)=> {
+        return <p key={storyId}>
+          {storyId}
+        </p>
+      })
     }
-    <Button variant="contained">Load five more stories</Button>
+    <Button variant="contained">Load {SLICE_SIZE} more stories</Button>
   </>
     // a "load 5 more button"
 
