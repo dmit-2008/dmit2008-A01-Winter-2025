@@ -30,6 +30,14 @@ export default function TopStoriesList() {
   }, []) // [] on mount because we're not in a cleanup function
 
 
+  // if you're lazy like dan and you don't want to look at
+  // the component profile  you can actually see all of the changes
+  // of a stateful
+  useEffect(()=> {
+    console.log(allStories)
+  }, [allStories]) // watch for any changes in all stories
+
+
 
   return <>
     {
