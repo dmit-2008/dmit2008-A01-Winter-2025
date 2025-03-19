@@ -10,8 +10,11 @@ export default function TopStoriesList() {
   const [isLoading, setIsLoading] = useState(false)
   const [allStories, setAllStories] = useState()
 
-
   // an effect that loads the topstories to a list
+  // make the request to the url top stories
+  // this should handle the loading state
+  // this should update all stories.
+
 
   return <>
     {
