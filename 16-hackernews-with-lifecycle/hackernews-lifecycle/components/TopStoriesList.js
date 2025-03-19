@@ -1,3 +1,5 @@
+import {useState, useEffect} from 'react'
+
 import Button from "@mui/material/Button"
 
 
@@ -5,6 +7,9 @@ export default function TopStoriesList() {
   // state
     // one for the entirety
     // one for the "rendered list"
+  const [isLoading, setIsLoading] = useState(false)
+  const [allStories, setAllStories] = useState()
+
 
   // an effect that loads the topstories to a list
 
