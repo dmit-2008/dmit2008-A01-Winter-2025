@@ -9,6 +9,11 @@ const reviewsAPI = {
   get: async function() {
     const REVIEWS_URL = `${BASE_URL}/reviews`
     const response = await fetch(REVIEWS_URL)
+    // here what I'm going to throw an error
+    // if the response is not okay (not in 200s for status)
+    if (!response.ok) {
+      throw new Error("Error while fetching.")
+    }
     const data = await response.json()
     return data
   },

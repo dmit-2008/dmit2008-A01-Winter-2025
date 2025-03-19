@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 
 import Container from '@mui/material/Container';
 // import circular progress.
-import CircularProgress from '@mui/joy/CircularProgress';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 import Navbar from '../components/Navbar';
@@ -23,20 +23,26 @@ export default function Home() {
   // the stateful values.
   const [reviews, setReviews] = useState([])
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState("")
+
 
   // fetch the data.
   // and render it on the page.
   // with a function that will be triggered with the
   // load button.
   const loadReviews = async () => {
-    // Note: we should deal with an error state but we're not right now.
-    setIsLoading(true) // we're loading here.
-    // learned exercise
-    const data = await reviewsAPI.get()
+    try {
+      setIsLoading(true) // we're loading here.
+      // learned exercise
+      const data = await reviewsAPI.get()
 
-    setIsLoading(false) // because it's fetched.
-    // set the reviews
-    setReviews(data)
+      setIsLoading(false) // because it's fetched.
+      // set the reviews
+      setReviews(data)
+      setError("")
+    } catch (error) {
+      setError("Error making request")
+    }
   }
 
   // I want you to disable strict mode
@@ -65,24 +71,17 @@ export default function Home() {
             setReviews={setReviews}
             loadReviews={loadReviews}
           />
-          <Box
-            sx={{
-              pt: 2,
-              pb: 2,
-            }}
-          >
-            <Button
-              variant="contained"
-              onClick={loadReviews}
-            >
-              Load All Current Reviews
-            </Button>
-          </Box>
-          <ReviewsList
-            reviews={reviews}
-            setReviews={setReviews}
-            loadReviews={loadReviews}
-          />
+          { // I can write a ternary
+          // just for the circularprogress
+          isLoading ?
+            <CircularProgress />
+          :
+            <ReviewsList
+              reviews={reviews}
+              setReviews={setReviews}
+              loadReviews={loadReviews}
+            />
+          }
         </Container>
       </main>
     </div>
