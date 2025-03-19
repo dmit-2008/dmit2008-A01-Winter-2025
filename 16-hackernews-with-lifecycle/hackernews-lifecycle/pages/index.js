@@ -6,7 +6,7 @@ export default function Home() {
     <div>
       <Container maxWidth="md" component={"main"}>
         <Typography component="h1" variant="h5">
-          Top HackerNews Stories
+          Top Hacker News Stories
         </Typography>
       </Container>
     </div>
