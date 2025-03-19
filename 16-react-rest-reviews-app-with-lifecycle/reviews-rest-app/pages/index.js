@@ -6,10 +6,12 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 
 import Container from '@mui/material/Container';
+// import circular progress.
+import CircularProgress from '@mui/joy/CircularProgress';
+
 
 import Navbar from '../components/Navbar';
 import NewReviewForm from '../components/NewReviewForm';
-import ReviewCard from '../components/ReviewCard';
 import ReviewsList from '../components/ReviewsList';
 
 import { deleteReview } from '../utils/api/reviews';
@@ -42,6 +44,11 @@ export default function Home() {
   // show circular progress on the reviews section when it's loading.
   // maybe think a ternary
   // I want you to load the reviews in an effect on mount.
+  useEffect(()=> {
+    loadReviews()
+  }, []) // write this so that it's on mount.
+
+
 
   return (
     <div>
