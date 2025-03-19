@@ -2,8 +2,7 @@
 import { useState, useEffect } from 'react'
 import Head from 'next/head'
 
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 import Container from '@mui/material/Container';
 // import circular progress.
@@ -41,7 +40,8 @@ export default function Home() {
       setReviews(data)
       setError("")
     } catch (error) {
-      setError("Error making request")
+      setError("Error connecting to server try again later.")
+      setIsLoading(false)
     }
   }
 
@@ -52,8 +52,25 @@ export default function Home() {
   // I want you to load the reviews in an effect on mount.
   useEffect(()=> {
     loadReviews()
+    // remember that the above is async but
+    // we don't use the results we just want to
+    // make sure it's called because the function
+    // itself will update the state of the component.
   }, []) // write this so that it's on mount.
 
+  // I'm going to return early for the application
+  if (error !== "") {
+    return <>
+      <Navbar />
+      <main>
+        <Container maxWidth="md">
+          <Typography variant="h6">
+            {error}
+          </Typography>
+        </Container>
+      </main>
+    </>
+  }
 
 
   return (
@@ -75,7 +92,7 @@ export default function Home() {
           // just for the circularprogress
           isLoading ?
             <CircularProgress />
-          :
+            :
             <ReviewsList
               reviews={reviews}
               setReviews={setReviews}
