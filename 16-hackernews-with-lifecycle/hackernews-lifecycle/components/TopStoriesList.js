@@ -9,7 +9,7 @@ export default function TopStoriesList() {
     // one for the entirety
     // one for the "rendered list"
   const [isLoading, setIsLoading] = useState(false)
-  const [allStories, setAllStories] = useState()
+  const [allStories, setAllStories] = useState([])
   // let's make a paginator that's increase the slice size
   const [page, setPage] = useState(1) // multplied by five and use slice.
 
@@ -33,12 +33,18 @@ export default function TopStoriesList() {
 
   }, []) // [] on mount because we're not in a cleanup function
 
+  const loadMoreStories = () => {
+    // increase the page by 1
+    setPage(page+1)
+  }
+
   // if you're lazy like dan and you don't want to look at
   // the component profile  you can actually see all of the changes
   // of a stateful
   useEffect(()=> {
     console.log(allStories)
   }, [allStories]) // watch for any changes in all stories
+
 
   // handle the loading state by display a loading
   if (isLoading) {
@@ -56,7 +62,10 @@ export default function TopStoriesList() {
         </p>
       })
     }
-    <Button variant="contained">Load {SLICE_SIZE} more stories</Button>
+    <Button
+      onClick={loadMoreStories}
+      variant="contained"
+    >Load {SLICE_SIZE} more stories</Button>
   </>
     // a "load 5 more button"
 
