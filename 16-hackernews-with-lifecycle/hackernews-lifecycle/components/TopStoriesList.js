@@ -10,10 +10,25 @@ export default function TopStoriesList() {
   const [isLoading, setIsLoading] = useState(false)
   const [allStories, setAllStories] = useState()
 
+  const loadAllStories = async () => {
+    setIsLoading(true)
+    const URL = "https://hacker-news.firebaseio.com/v0/topstories.json"
+    const response = await fetch(URL)
+    const data = await response.json()
+    setAllStories(data)
+    setIsLoading(false)
+  }
+
   // an effect that loads the topstories to a list
   // make the request to the url top stories
   // this should handle the loading state
   // this should update all stories.
+  useEffect(()=> {
+    // we're going to make the load request here.
+    loadAllStories()
+
+  }, []) // [] on mount because we're not in a cleanup function
+
 
 
   return <>
