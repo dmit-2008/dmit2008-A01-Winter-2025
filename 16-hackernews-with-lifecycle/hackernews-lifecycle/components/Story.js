@@ -9,6 +9,7 @@ export default function Story({id}) {
   const [story, setStory] = useState(true)
 
   const loadStory = async () => {
+    // use a try catch is great practice, I'm not doing it
     // since isLoading is already true we don't need to set it true.
     const STORY_URL = `https://hacker-news.firebaseio.com/v0/item/${id}.json`
     console.log("Story url", STORY_URL)
@@ -24,7 +25,8 @@ export default function Story({id}) {
   // that is going to listen to the changes
   // in the id
   useEffect(()=> {
-
+    // load the story
+    loadStory()
   }, [id]) // listen to prop changes.
 
   // see if you can handle the loading state
@@ -39,11 +41,21 @@ export default function Story({id}) {
   // we're going to whip up some cards with some links
   // and wrap that up.
 
+  // handle the loading state
+  if (isLoading) {
+    // so many options to display loading
+    // a spinner, a skeleton, a progress bar.
+    // pick one and go with it.
+    return <p>
+      {`Loading story ${id}...`}
+    </p>
+  }
 
-
+  // if it hits here then we'll have our story
+  console.log(story)
 
   return <p>
-    {id}
+    {story.title} by {story.by}
   </p>
 
 }
