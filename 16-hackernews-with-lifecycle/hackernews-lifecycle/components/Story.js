@@ -1,12 +1,17 @@
 import {useState, useEffect} from 'react'
 
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Link from '@mui/material/Link';
+
 // remember destructure the prop.
 export default function Story({id}) {
   // I want you to create a stateful value
   // for isLoading (defaults true)
   // for story (which will hold the data)
   const [isLoading, setIsLoading] = useState(true)
-  const [story, setStory] = useState(true)
+  const [story, setStory] = useState()
 
   const loadStory = async () => {
     // use a try catch is great practice, I'm not doing it
@@ -29,9 +34,14 @@ export default function Story({id}) {
     loadStory()
   }, [id]) // listen to prop changes.
 
+  // let's take a look at the changes in story
+  useEffect(()=> {
+    console.log(`onupdate of story ${id}`, story)
+  }, [story])
+
+
   // see if you can handle the loading state
   // and print the title once loaded.
-
 
   // when the id is rendered
   // this will fetch story url
@@ -52,10 +62,16 @@ export default function Story({id}) {
   }
 
   // if it hits here then we'll have our story
-  console.log(story)
+  // console.log(story)
 
-  return <p>
-    {story.title} by {story.by}
-  </p>
+  return <Card sx={{mt: 5}}>
+    <CardContent>
+      <Link href={story.url} underline="none">
+        {story.title}
+      </Link>
+       by {story.by}
+
+    </CardContent>
+  </Card>
 
 }
