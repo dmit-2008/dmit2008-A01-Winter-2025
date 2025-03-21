@@ -15,6 +15,7 @@ export default function Story({id}) {
   // when the id is rendered
   // this will fetch story url
   // from here https://github.com/HackerNews/API?tab=readme-ov-file#items
+  // example: https://hacker-news.firebaseio.com/v0/item/43434730.json?print=pretty
 
   // we're going to whip up some cards with some links
   // and wrap that up.
