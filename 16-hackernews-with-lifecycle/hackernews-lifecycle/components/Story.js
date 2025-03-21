@@ -1,5 +1,6 @@
 import {useState, useEffect} from 'react'
 
+import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -71,9 +72,12 @@ export default function Story({id}) {
         {story.title}
       </Link>
       <Typography variant="body2" sx={{ color: 'text.secondary', mb: 1.5 }}>
-        by {story.by}
+        score {story.score} by {story.by}
       </Typography>
     </CardContent>
+    <CardActions>
+      <Button size="small">Load comments</Button>
+    </CardActions>
   </Card>
 
 }
