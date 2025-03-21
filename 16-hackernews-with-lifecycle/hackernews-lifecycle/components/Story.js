@@ -4,6 +4,7 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Link from '@mui/material/Link';
+import Typography from '@mui/material/Typography';
 
 // remember destructure the prop.
 export default function Story({id}) {
@@ -64,13 +65,14 @@ export default function Story({id}) {
   // if it hits here then we'll have our story
   // console.log(story)
 
-  return <Card sx={{mt: 5}}>
+  return <Card sx={{mt: 1}}>
     <CardContent>
       <Link href={story.url} underline="none">
         {story.title}
       </Link>
-       by {story.by}
-
+      <Typography variant="body2" sx={{ color: 'text.secondary', mb: 1.5 }}>
+        by {story.by}
+      </Typography>
     </CardContent>
   </Card>
 
