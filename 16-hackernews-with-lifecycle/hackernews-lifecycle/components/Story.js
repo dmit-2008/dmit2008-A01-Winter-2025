@@ -4,12 +4,12 @@ export default function Story({id}) {
   // for isLoading (defaults true)
   // for story (which will hold the data)
 
-  // we're going to make an effect
+  // I want you to make an effect
   // that is going to listen to the changes
   // in the id
 
   // see if you can handle the loading state
-  // and print the title.
+  // and print the title once loaded.
 
 
   // when the id is rendered
