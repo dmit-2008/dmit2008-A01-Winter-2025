@@ -2,6 +2,8 @@ import {useState, useEffect} from 'react'
 
 import Button from "@mui/material/Button"
 
+// let's import our own custom component
+import Story from './Story'
 
 export default function TopStoriesList() {
   const SLICE_SIZE = 5
@@ -51,15 +53,13 @@ export default function TopStoriesList() {
     return "Loading..." // fix make nicer later.
   }
 
-
   return <>
     {
       // a list of Story components that will have
       // a prop of id.
       allStories.slice(0, page*SLICE_SIZE).map((storyId)=> {
-        return <p key={storyId}>
-          {storyId}
-        </p>
+        // is were
+        return <Story key={storyId} id={storyId} />
       })
     }
     <Button
