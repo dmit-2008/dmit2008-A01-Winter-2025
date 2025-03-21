@@ -76,7 +76,13 @@ export default function Story({id}) {
       </Typography>
     </CardContent>
     <CardActions>
-      <Button size="small">Load comments</Button>
+      {/* As a challenge one thing you folks can do
+        is build a comment comment component using the
+        exact same ideas as this component.
+      */}
+      <Button variant="contained"size="small">
+        Load comments
+      </Button>
     </CardActions>
   </Card>
 
