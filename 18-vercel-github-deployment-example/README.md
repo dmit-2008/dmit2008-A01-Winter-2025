@@ -1,5 +1,20 @@
 # Deployments using vercel
 
+# Our deployment
+
+[github repo](https://github.com/dgmouris/dmit2008-a01-winter-2025-deployment-example)
+
+[our deployment](https://dmit2008-a01-winter-2025-deployment-example.vercel.app/)
+
+# Deployment workflow
+
+[Deployments](deployments.excalidraw)
+
+# Iaas Vs Paas
+
+[look here](paas_saas_iaas.excalidraw)
+
+
 # Why?
 
 You need to deploy your applications ("to production") to make them reachable for everyone and have a usable product/site. We're going to use Vercel for our deployment. They created and currently maintain Next.js and they have a pretty good pricing model.
