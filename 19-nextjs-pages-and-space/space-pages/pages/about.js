@@ -6,8 +6,8 @@ import Box from '@mui/material/Box';
 
 import NavBar from '@components/NavBar';
 
-export default function Home() {
-  
+export default function AboutUs() {
+
   return (
     <div>
       <Head>

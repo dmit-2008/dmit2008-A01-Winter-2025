@@ -24,6 +24,12 @@ export default function AgencyCard(props) {
     router.push(`/agency/${props.id}`)
   }
 
+  // I want you to to create the agency page
+  // with an path param of "agencyId"
+  // I want to see if you can get the data
+  // and display the agency name using the techniques
+  // we've learned.
+
   return <Card sx={{ marginTop: "8px", maxWidth: 345 }}>
     {props.imageUrl && <CardMedia
       component="img"
