@@ -73,7 +73,7 @@ export default function Home() {
                 name={agency.name}
                 description={agency.description}
                 abbreviation={agency.abbrev}
-                // we're going to pass in the id
+                // we're going to pass in the id of the agency
                 id={agency.id}
               />
             })
