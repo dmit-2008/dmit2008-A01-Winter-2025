@@ -30,7 +30,10 @@ export default function Home() {
     loadAgencies()
   }, []) // [] means on mount there
 
-
+  // handle the loading
+  if (isLoading) {
+    return "Loading ..."
+  }
 
   return (
     <div>
