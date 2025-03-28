@@ -34,6 +34,9 @@ export default function Home() {
   if (isLoading) {
     return "Loading ..."
   }
+  // display the agencies if it hits here it'll be defined
+  console.log(agencies)
+
 
   return (
     <div>
@@ -58,6 +61,24 @@ export default function Home() {
               alignItems: 'center',
             }}
           >
+            {/* We're going to loop through
+            the results of agencies look at the
+            agencies in the console to see the
+            shape of it. */
+            agencies.results.map((agency)=> {
+              return <AgencyCard
+                key={agency.id}
+                // the ? just check if there is an image obj.
+                imageUrl={agency.image?.image_url}
+                name={agency.name}
+                description={agency.description}
+                abbreviation={agency.abbrev}
+                // we're going to pass in the id
+                id={agency.id}
+              />
+            })
+            }
+
           </Box>
         </Container>
 
