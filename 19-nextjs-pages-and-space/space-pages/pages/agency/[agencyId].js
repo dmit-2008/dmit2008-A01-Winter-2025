@@ -59,13 +59,18 @@ export default function Agency() {
     return `Loading ${agencyId}`
   }
 
+  // we're going to display the agency info
+
+
   return (
     <div>
       <NavBar />
       <Container sx={{paddingTop:2}} component="main" maxWidth="xs">
         <Typography variant="h3">
-          {/* We can observe the agencyId in the JSX */}
-          Agency {agencyId}
+          {/* We're going to use our data to display the piece
+            show the agency name and the abbreviation.
+          */}
+          {`${agency.name} (${agency.abbrev})`}
         </Typography>
         <Typography variant="p">
           Our agency data...
