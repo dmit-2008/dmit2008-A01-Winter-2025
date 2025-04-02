@@ -5,9 +5,10 @@ import { useRouter } from 'next/router';
 import {useState, useEffect} from 'react'
 import Head from 'next/head'
 
-import Typography from '@mui/material/Typography';
-import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
 
 import AgencyCard from '@components/AgencyCard';
 import NavBar from '@components/NavBar';
@@ -20,13 +21,19 @@ export default function Home() {
   // modifying the query parameters of the page
   const router = useRouter()
 
+  // state
+  // we're going to do something with the state here
+  // we're going set the origin state to q from router
+  // query or an empty string if it doesn't exist yet.
+  // this would mean if the path is /?q=nasa the state
+  // would be nasa
+  const [searchQuery, setSearchQuery] = useState(
+    router.query.q || ""
+  )
 
   // we're going to get and load the data
   const [isLoading, setIsLoading] = useState(true)
   const [agencies, setAgencies] = useState() // leave it undefined until we get the data
-
-
-
 
   // create a loading function
   const loadAgencies = async () => {
@@ -73,6 +80,14 @@ export default function Home() {
               alignItems: 'center',
             }}
           >
+            {/* we're going to add the textfield */}
+            <TextField
+              label="Search"
+              fullWidth
+              // set the value
+              value={searchQuery}
+            />
+
             {/* We're going to loop through
             the results of agencies look at the
             agencies in the console to see the
