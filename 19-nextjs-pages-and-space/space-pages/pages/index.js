@@ -1,3 +1,6 @@
+// let's import the router here
+import { useRouter } from 'next/router';
+
 // we're going to import state and effect
 import {useState, useEffect} from 'react'
 import Head from 'next/head'
@@ -13,13 +16,22 @@ import { getAgencies } from '@utils/api/agencies';
 
 
 export default function Home() {
+  // we're going to need the router as we'll be
+  // modifying the query parameters of the page
+  const router = useRouter()
+
+
   // we're going to get and load the data
   const [isLoading, setIsLoading] = useState(true)
   const [agencies, setAgencies] = useState() // leave it undefined until we get the data
 
+
+
+
   // create a loading function
   const loadAgencies = async () => {
-    const data = await getAgencies()
+    // we're going to pass an empty object
+    const data = await getAgencies({})
     // set the agencies, and handle the lading state.
     setAgencies(data)
     setIsLoading(false)

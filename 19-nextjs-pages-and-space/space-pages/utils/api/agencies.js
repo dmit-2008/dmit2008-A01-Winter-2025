@@ -1,7 +1,11 @@
 import { BASE_URL } from './base.js'
 
-const getAgencies = () => {
-  return fetch(`${BASE_URL}/agencies?featured=true`)
+const getAgencies = ({search}) => {
+  let url = `${BASE_URL}/agencies?featured=true`
+  if (search) {
+    url = `${BASE_URL}/agencies?search=${search}`
+  }
+  return fetch(url)
     .then((response)=> {
         return response.json()
     }).then((data)=>{
