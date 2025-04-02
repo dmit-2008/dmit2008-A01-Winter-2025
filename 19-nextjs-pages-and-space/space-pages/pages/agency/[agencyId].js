@@ -60,7 +60,7 @@ export default function Agency() {
   }
 
   // we're going to display the agency info
-
+  console.log(agency)
 
   return (
     <div>
@@ -75,6 +75,17 @@ export default function Agency() {
         <Typography variant="p">
           Our agency data...
         </Typography>
+        {/* Challenge
+          What I want you to do is loop through
+          the agency spacecraft_list property
+          render a SimpleDetails card with the following
+          props:
+          - description: spacecraft name
+          - buttonCallback: a one line function that
+            does a router.push to /spacecraft/idofthespacecraft
+          - buttonName: "Go to spacecraft"
+          - make sure that you have a key
+        */}
       </Container>
     </div>
   )
