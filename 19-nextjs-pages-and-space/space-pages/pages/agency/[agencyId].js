@@ -73,7 +73,7 @@ export default function Agency() {
           {`${agency.name} (${agency.abbrev})`}
         </Typography>
         <Typography variant="p">
-          Our agency data...
+          {agency.description}
         </Typography>
         {/* Challenge
           What I want you to do is loop through
