@@ -21,15 +21,8 @@ export default function Home() {
   // modifying the query parameters of the page
   const router = useRouter()
 
-  // state
-  // we're going to do something with the state here
-  // we're going set the origin state to q from router
-  // query or an empty string if it doesn't exist yet.
-  // this would mean if the path is /?q=nasa the state
-  // would be nasa
-  const [searchQuery, setSearchQuery] = useState(
-    router.query.q || ""
-  )
+  // state for the search
+  const [searchQuery, setSearchQuery] = useState("")
 
   // we're going to get and load the data
   const [isLoading, setIsLoading] = useState(true)
@@ -44,10 +37,31 @@ export default function Home() {
     setIsLoading(false)
   }
 
+  // let's listen to the router and set the search query
+  useEffect(()=> {
+    // the guard if the router isn't ready
+    if (!router.isReady) {
+      return
+    }
+    // we're going to do something with the state here
+    // we're going set the state to q from router
+    // query or an empty string if it doesn't exist yet.
+    // this would mean if the path is /?q=nasa the state
+    // would be nasa
+    setSearchQuery(router.query.q || "")
+  }, [router.isReady])
+
+
+
   // we're going to have an effect that will fetch this on load
   useEffect(()=> {
+    // the guard if the router isn't ready
+    if (!router.isReady) {
+      return
+    }
+
     loadAgencies()
-  }, []) // [] means on mount there
+  }, [searchQuery]) // let's cahnge this to listen to the searchQuery
 
   // handle the loading
   if (isLoading) {
@@ -86,6 +100,7 @@ export default function Home() {
               fullWidth
               // set the value
               value={searchQuery}
+
             />
 
             {/* We're going to loop through
