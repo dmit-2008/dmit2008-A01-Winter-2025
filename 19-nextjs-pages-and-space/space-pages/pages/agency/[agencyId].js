@@ -86,7 +86,7 @@ export default function Agency() {
           - buttonName: "Go to spacecraft"
           - make sure that you have a key
         */}
-        { agency.spacecraft_list.map((spacecraft)=> {
+        {agency.spacecraft_list.map((spacecraft)=> {
           return <SimpleDetailsCard
             key={spacecraft.id}
             title="spacecraft"
