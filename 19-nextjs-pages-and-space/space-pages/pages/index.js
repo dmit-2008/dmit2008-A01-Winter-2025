@@ -31,11 +31,34 @@ export default function Home() {
   // create a loading function
   const loadAgencies = async () => {
     // we're going to pass an empty object
-    const data = await getAgencies({})
+    const data = await getAgencies({
+      search: searchQuery // passing this in will search
+      // the backend for what is in the searchQuery stateful value
+    })
     // set the agencies, and handle the lading state.
     setAgencies(data)
     setIsLoading(false)
   }
+
+  // we're going to update the searchQuery with our state
+  // but we're also going to update the query parameters
+  // to the page using router.replace, router.replace
+  // is different than push because it'll just replace
+  // the current spot in the "history" with the path
+  // passed in.
+  const updateSearch = (event) => {
+    // let's update the searchquery
+    setSearchQuery(event.target.value)
+    // let's trigger a change in the url
+    router.replace({
+      query: {
+        ...router.query,
+        q: event.target.value // update the q in the url
+      },
+      pathname: router.pathname,
+    })
+  }
+
 
   // let's listen to the router and set the search query
   useEffect(()=> {
@@ -59,7 +82,8 @@ export default function Home() {
     if (!router.isReady) {
       return
     }
-
+    // not the change that this is searching every
+    // time we change the search query
     loadAgencies()
   }, [searchQuery]) // let's cahnge this to listen to the searchQuery
 
@@ -100,7 +124,8 @@ export default function Home() {
               fullWidth
               // set the value
               value={searchQuery}
-
+              // use our update search
+              onChange={updateSearch}
             />
 
             {/* We're going to loop through
