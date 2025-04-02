@@ -7,9 +7,9 @@ import {useRouter} from 'next/router'
 
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-import Box from '@mui/material/Box';
 
 import NavBar from '@components/NavBar';
+import SimpleDetailsCard from '@components/SimpleDetailsCard';
 
 // let's import the api function to get the data from the agency
 import { getAgency } from '@utils/api/agencies';
@@ -86,6 +86,14 @@ export default function Agency() {
           - buttonName: "Go to spacecraft"
           - make sure that you have a key
         */}
+        { agency.spacecraft_list.map((spacecraft)=> {
+          return <SimpleDetailsCard
+            key={spacecraft.id}
+            title="spacecraft"
+            description={spacecraft.name}
+          />
+        })}
+
       </Container>
     </div>
   )
