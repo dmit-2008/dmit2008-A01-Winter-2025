@@ -91,6 +91,10 @@ export default function Agency() {
             key={spacecraft.id}
             title="spacecraft"
             description={spacecraft.name}
+            buttonCallback={()=> {
+              router.push(`/spacecraft/${spacecraft.id}`)
+            }}
+            buttonName={"Go to spacecraft"}
           />
         })}
 
