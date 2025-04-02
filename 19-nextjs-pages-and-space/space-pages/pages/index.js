@@ -56,8 +56,19 @@ export default function Home() {
         q: event.target.value // update the q in the url
       },
       pathname: router.pathname,
-    })
+    },
+    undefined, // we're staying on the page so this dosn't matter
+    {shallow: true} // prevent a page refresh
+    // this will make more sense when we talk about backend features of next.js
+    )
   }
+  // Note: ways to improve this.
+  // 1. using debouncing here is a good tool to use
+  // so that you don't trigger every key stroke you do after
+  // every so many seconds
+  // 2. as a general rule normally you only search
+  // after a user has enter 3 or more characters
+  // you can do this on your own!
 
 
   // let's listen to the router and set the search query
