@@ -18,7 +18,7 @@ import reviewsAPI from '../utils/api/reviewsAPIAsObject';
 // changing how you're fetching the data
 // getserversideprops is going to be running on the backend
 export async function getServerSideProps(context) {
-  console.log("in getServerSideProps ")
+  console.log("in getServerSideProps")
   console.log(context)
   // make the request to the reviews api on the server
   const data = await reviewsAPI.get()
