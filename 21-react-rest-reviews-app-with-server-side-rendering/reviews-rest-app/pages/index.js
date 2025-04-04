@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Head from 'next/head'
 
 import Box from '@mui/material/Box';
@@ -15,8 +15,27 @@ import { deleteReview } from '../utils/api/reviews';
 // learned exercise
 import reviewsAPI from '../utils/api/reviewsAPIAsObject';
 
+// changing how you're fetching the data
+// getserversideprops is going to be running on the backend
+export async function getServerSideProps(context) {
+  console.log("in getServerSideProps ")
+  console.log(context)
+  // make the request to the reviews api on the server
+  const data = await reviewsAPI.get()
+  // and then you're going to pass this data onto the client.
+  // you do this with the return
+  return {
+    props: {
+      reviewsFromBackend: data
+    }
+  }
+}
 
-export default function Home() {
+// the data from the function above is going to be passed in as props.
+export default function Home({reviewsFromBackend}) {
+  // show the reviews from the backend
+  console.log("reviewsFromBackend", reviewsFromBackend)
+
   // the stateful values.
   const [reviews, setReviews] = useState([])
 
@@ -35,6 +54,10 @@ export default function Home() {
   // put the form in it's component
   // know what props are needed and what state needs
   // to be in that component vs this component.
+  useEffect(()=> {
+    loadReviews()
+  }, [])
+
 
   return (
     <div>
