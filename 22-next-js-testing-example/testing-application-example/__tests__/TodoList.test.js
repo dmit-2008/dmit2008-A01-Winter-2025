@@ -13,6 +13,11 @@ test("tests 2 - 1 is equal to one", () => {
 
   // our tested value
   let value = 2-1
+  // let's make this test fail first just to see what it looks like
+  // expect(value).toEqual(65)
+  // the above fails but we could turn this into a positive using .not. (the opposite)
+  expect(value).not.toEqual(65)
+
   // test that this is true
   expect(value).toEqual(1)
 
