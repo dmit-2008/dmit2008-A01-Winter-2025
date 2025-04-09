@@ -40,5 +40,18 @@ test("todo list title renders correctly.", ()=> {
   // using the matchers from @testing-library/jest-dom
   // I'm going to check to see if this is in the document
   // let's make it fail first.
-  expect(titleElement).not.toBeInTheDocument()
+  // expect(titleElement).not.toBeInTheDocument()
+  // the above fails let's make it pass
+  expect(titleElement).toBeInTheDocument()
+})
+
+test("todo item added to the list successfully", ()=> {
+  // the process to do this:
+  // render the component
+  // get the input, button, list elements via different methods
+  // "simulate" typing into the todo list
+  // check to see if the input has that text
+  // click the button of add todo
+  // check to see if the input is empty
+  // check to see fi the list has the string.
 })
