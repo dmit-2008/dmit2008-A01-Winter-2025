@@ -39,4 +39,6 @@ test("todo list title renders correctly.", ()=> {
 
   // using the matchers from @testing-library/jest-dom
   // I'm going to check to see if this is in the document
+  // let's make it fail first.
+  expect(titleElement).not.toBeInTheDocument()
 })
