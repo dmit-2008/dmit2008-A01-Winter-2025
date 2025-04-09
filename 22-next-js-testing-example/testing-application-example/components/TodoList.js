@@ -34,6 +34,10 @@ export default function TodoList () {
     <Grid container spacing={2}>
 
       <Grid item xs={12}>
+        {/* What we're doing in the first
+        test is checking if this is in the document
+
+        */}
         <Typography variant="h2" component="h2">
           Our Todo List
         </Typography>
