@@ -15,15 +15,15 @@ export default function TodoList () {
   const [todoText, setTodoText] = useState("")
 
   const onTodoTextChange = (event) => {
-    console.log(event.target.value)
+    // console.log(event.target.value)
     setTodoText(event.target.value)
   }
 
   const onAddTodoClick = () => {
-    console.log("clicked")
+    // console.log("clicked")
     // create a new list that has allTodos and the new todos.
     const newAllTodoList = [...allTodos, todoText]
-    console.log(newAllTodoList)
+    // console.log(newAllTodoList)
     // set the todoList
     setAllTodos(newAllTodoList)
     // reset the value of the todo text.
@@ -32,7 +32,7 @@ export default function TodoList () {
 
   return  <Box sx={{ flexGrow: 1 }}>
     <Grid container spacing={2}>
-      
+
       <Grid item xs={12}>
         <Typography variant="h2" component="h2">
           Our Todo List
