@@ -48,9 +48,9 @@ the command `npm run test-watch` will essentially just continue to run the tests
 
 1. Install the mock server worker and isomorphic-fetch so that we can "mock" out the calls to quotable.io. also install install jest-fixed-dom.
 ```
-npm install msw isomorphic-fetch jest-fixed-dom --save-dev
+npm install msw isomorphic-fetch jest-fixed-jsdom --save-dev
 ```
-1. update the jest.config.js with jest-fixed-dom.
+1. update the jest.config.js with jest-fixed-jsdom.
 ```js
 // jest.config.js
 // ... rest of the config ...
