@@ -94,5 +94,4 @@ test("todo item added to the list successfully", ()=> {
   // expect(listElement).toHaveTextContent("gary")
   // make them pass
   expect(listElement).toHaveTextContent(EXPECTED_STRING)
-
 })
