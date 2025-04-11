@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://api.quotable.io'
+export const BASE_URL = 'http://localhost:3000'
