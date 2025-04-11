@@ -1,8 +1,10 @@
 // is we're going to import a few things from
 // react testing library see here https://testing-library.com/docs/react-testing-library/example-intro
 // so that we can render our application.
-import {render, screen} from '@testing-library/react'
+import {fireEvent, act, render, screen} from '@testing-library/react'
 // this is needed to render the component and access pieces within that component
+// we need fireEvent and act to perform state changes in our
+// application
 import '@testing-library/jest-dom'
 // this library is needed so that we can use different matchers that
 // will enhance how we test the application.
@@ -48,9 +50,31 @@ test("todo list title renders correctly.", ()=> {
 test("todo item added to the list successfully", ()=> {
   // the process to do this:
   // render the component
+  render(<TodoList />)
   // get the input, button, list elements via different methods
+  const inputElement = screen.getByLabelText("New Todo") // reference: https://testing-library.com/docs/queries/about/#priority
+  const button = screen.getByText("Add Todo")
+  // this is a note, you can get by test id.
+  const listElement = screen.getByTestId("todo-item-list")
   // "simulate" typing into the todo list
+  // the value we'll put in here to our element
+  const EXPECTED_STRING = "Testing, feels like the first time (the very first time)"
+  // for elements that are just updating the state of an
+  // an input and that's it you can use fireEvent which will
+  // simulate the "change" event trigger, and we can customize
+  // what the event object will look like.
+
+
+  fireEvent.change(
+    inputElement, // the element to fire the event on.
+    { // the is going to be the simulated "event" object
+      target: {
+        value: EXPECTED_STRING
+      }
+    }
+  )
   // check to see if the input has that text
+
   // click the button of add todo
   // check to see if the input is empty
   // check to see fi the list has the string.

@@ -45,6 +45,7 @@ export default function TodoList () {
       <Grid item xs={10}>
         <TextField
           data-testid="new-todo-input"
+          // the label text for the screen
           label="New Todo"
           variant="standard"
           sx={{width: '100%'}}
@@ -62,6 +63,7 @@ export default function TodoList () {
 
 
       <List
+        // the prop below is only used for testing.
         data-testid='todo-item-list'
         sx={{width: `100%`}}>
         {allTodos.map((todoItem, index)=> {
