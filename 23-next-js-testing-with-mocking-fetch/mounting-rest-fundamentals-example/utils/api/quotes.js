@@ -1,7 +1,7 @@
 import {BASE_URL } from './base.js'
 
 const getRandomQuote = () => {
-  return fetch(`${BASE_URL}/random_quote`)
+  return fetch(`${BASE_URL}/api/random_quote`)
     .then((response)=> {
       return response.json()
     }).then((data)=> {
