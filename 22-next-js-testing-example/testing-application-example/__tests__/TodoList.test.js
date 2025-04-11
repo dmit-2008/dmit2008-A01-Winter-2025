@@ -63,8 +63,6 @@ test("todo item added to the list successfully", ()=> {
   // an input and that's it you can use fireEvent which will
   // simulate the "change" event trigger, and we can customize
   // what the event object will look like.
-
-
   fireEvent.change(
     inputElement, // the element to fire the event on.
     { // the is going to be the simulated "event" object
@@ -74,7 +72,8 @@ test("todo item added to the list successfully", ()=> {
     }
   )
   // check to see if the input has that text
-
+  // but the first time you're going to make the test fail
+  expect(inputElement.value).not.toBe(EXPECTED_STRING)
   // click the button of add todo
   // check to see if the input is empty
   // check to see fi the list has the string.
