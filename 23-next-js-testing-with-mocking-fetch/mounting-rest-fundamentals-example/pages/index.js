@@ -13,7 +13,7 @@ import Container from '@mui/material/Container';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 
-import { getRandomQuote } from '../utils/api/quotes.js'  
+import { getRandomQuote } from '../utils/api/quotes.js'
 
 export default function Home() {
   const DEFAULT_QUOTE = "Quote here"
@@ -40,7 +40,7 @@ export default function Home() {
   const changeQuote = () => {
     getRandomQuote().then((data)=> {
         setQuoteData({
-          quote: data.content,
+          quote: data.quote, // the last change
           author: data.author
         })
       })

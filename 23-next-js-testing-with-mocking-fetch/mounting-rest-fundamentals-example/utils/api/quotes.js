@@ -1,4 +1,4 @@
-import {BASE_URL } from './base.js'
+import { BASE_URL } from './base.js'
 
 const getRandomQuote = () => {
   return fetch(`${BASE_URL}/api/random_quote`)
