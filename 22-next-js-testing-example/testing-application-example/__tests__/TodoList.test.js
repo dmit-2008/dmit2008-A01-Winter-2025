@@ -73,8 +73,26 @@ test("todo item added to the list successfully", ()=> {
   )
   // check to see if the input has that text
   // but the first time you're going to make the test fail
-  expect(inputElement.value).not.toBe(EXPECTED_STRING)
+  // expect(inputElement.value).not.toBe(EXPECTED_STRING)
+  // make the tests pass.
+  expect(inputElement.value).toBe(EXPECTED_STRING)
   // click the button of add todo
+  // act needs to be called when you're doing a more complex
+  // state change normally two or more
+  act(()=> {
+    button.click() // how to fire an event of a click on a button
+  })
   // check to see if the input is empty
+  // make the tests fail first (it changed after button click)
+  // expect(inputElement.value).toBe(EXPECTED_STRING)
+  expect(inputElement.value).toBe("")
+
   // check to see fi the list has the string.
+  // we can check to see if the the list has some text content here
+  // reference: https://github.com/testing-library/jest-dom?tab=readme-ov-file#tohavetextcontent
+  // make the tests fail
+  // expect(listElement).toHaveTextContent("gary")
+  // make them pass
+  expect(listElement).toHaveTextContent(EXPECTED_STRING)
+
 })
