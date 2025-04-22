@@ -1,0 +1,16 @@
+{
+  "reviews": [
+    {
+      "id": 1,
+      "title": "Wheel of time",
+      "comment": "Books were great but the show was just okay. ",
+      "rating": 8
+    },
+    {
+      "id": 2,
+      "title": "The Lord of the rings",
+      "comment": "A classic movie and a classic book series as well!",
+      "rating": 10
+    } 
+  ]
+}
