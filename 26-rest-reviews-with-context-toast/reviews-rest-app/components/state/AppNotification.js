@@ -17,7 +17,11 @@ export const AppNotificationContext = createContext({})
 export const useNotification = () => {
   // use the context and return it
   // throw an error if not contained within the provider
-
+  const notification = useContext(AppNotificationContext)
+  if (!notification) {
+    throw new Error("useNotification needs to be used in an AppNotification")
+  }
+  return notification
 }
 
 

@@ -12,13 +12,18 @@ import RadioGroup from '@mui/material/RadioGroup';
 
 import TextField from '@mui/material/TextField';
 
+// let's import our newly created hook
+import { useNotification } from './state/AppNotification';
+
 import { postReview } from '../utils/api/reviews';
 
 export default function AdaptationReviewForm(props) {
   const [title, setTitle] = useState("")
   const [comments, setComments] = useState("")
   const [rating, setRating] = useState(0)
-  
+
+  const notification = useNotification()
+
   const handleSubmit = (event) => {
     event.preventDefault()
     if (!isValidForm()) {
@@ -30,8 +35,13 @@ export default function AdaptationReviewForm(props) {
       rating: rating
     }).then((newReviewData)=> {
       props.setReviews([newReviewData, ...props.reviews])
+      // use our new notification
+      notification.show({
+        message: `"${title}" review added successfully.`,
+        type: "success"
+      })
       resetForm()
-    })    
+    })
   }
 
   const isValidForm = () => {
@@ -42,7 +52,7 @@ export default function AdaptationReviewForm(props) {
     } else {
       return false
     }
-      
+
   }
 
   const resetForm = () => {
