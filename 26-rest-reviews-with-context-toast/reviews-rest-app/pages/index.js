@@ -36,6 +36,16 @@ export default function Home() {
 
     getReviews().then((data)=> {
       setReviews(data)
+      // use my function here
+      notification.show({
+        message: "Reviews loaded succesfully",
+        type: "info"
+      })
+    }).catch((error)=> {
+      notification.show({
+        message: "Error while loading reviews",
+        type: "error"
+      })
     })
   }
 

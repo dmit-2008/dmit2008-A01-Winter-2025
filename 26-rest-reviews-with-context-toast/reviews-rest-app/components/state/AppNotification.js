@@ -1,4 +1,6 @@
-import {useState, createContext} from 'react'
+// Docs reference: https://react.dev/learn/passing-data-deeply-with-context
+// we're going to need useContext and createContext
+import {useState, createContext, useContext} from 'react'
 // we're going to do a few things.
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
@@ -7,6 +9,16 @@ import Alert from '@mui/material/Alert';
 export const AppNotificationContext = createContext({})
 // the above is going t o be what you're goping to import
 // to essentially the values (provided later)
+
+// 4. Creating our own hook
+//    in your own hooks that you create you can use
+//    other hooks for example you can use useEffect
+//    or you can use useState, useContext, useRouter.
+export const useNotification = () => {
+  // use the context and return it
+  // throw an error if not contained within the provider
+
+}
 
 
 // 1. create a componetn that will wrap the _app.js
