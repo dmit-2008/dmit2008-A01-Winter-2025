@@ -13,9 +13,11 @@ export const AppNotificationContext = createContext({})
 export default function AppNotification({children}) {
   // the state that will either open or close the notification
   const [open, setOpen] = useState(true) // debug: put the state to true
+  // we're going to make the message and color stateful
+  const [text, setText] = useState("")
+  const [severity, setSeverity] = useState("info")
 
   // we're going to wrap all components in this provider
-
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -23,6 +25,16 @@ export default function AppNotification({children}) {
 
     setOpen(false);
   };
+
+  // this function is going to be what we'll pass as a
+  // value to the context here, with our knowledge of
+  // object destructuring and useContext we can use this
+  // in the other components (nested in AppNotification)
+  const show = ({message, type})=> {
+    setOpen(true) // to display the message
+    setText(message)
+    setSeverity(type)
+  }
 
   // 3. in the component we'll create a Context provider (this is has changed we'll make a note)
   // Note AppNotificationContext.Provider in react 19+ is AppNotificationContext
@@ -33,17 +45,20 @@ export default function AppNotification({children}) {
       so that other components can trigger (with the context)
     */}
     <Snackbar
+      anchorOrigin={{ vertical: "top", horizontal:"right" }}
       open={open}
       autoHideDuration={6000}
       onClose={handleClose}
     >
+      {/* we're going to change the message
+      based on the state change */}
       <Alert
         onClose={handleClose}
-        severity="success"
+        severity={severity}
         variant="filled"
         sx={{ width: '100%' }}
       >
-        This is a success Alert inside a Snackbar!
+        {text}
       </Alert>
     </Snackbar>
   </AppNotificationContext.Provider>
