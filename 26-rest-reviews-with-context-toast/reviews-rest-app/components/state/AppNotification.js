@@ -38,8 +38,9 @@ export default function AppNotification({children}) {
 
   // 3. in the component we'll create a Context provider (this is has changed we'll make a note)
   // Note AppNotificationContext.Provider in react 19+ is AppNotificationContext
-  // we're passing in an empty object
-  return <AppNotificationContext.Provider value={{}}>
+  // we're going to pass in show so that another component
+  // can import it.
+  return <AppNotificationContext.Provider value={{show}}>
     {children}
     {/* we're going to add our snackbar below
       so that other components can trigger (with the context)

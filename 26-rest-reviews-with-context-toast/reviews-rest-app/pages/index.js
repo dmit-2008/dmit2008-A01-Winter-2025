@@ -11,7 +11,7 @@ import { getReviews } from '../utils/api/reviews'
 
 export default function Home() {
   const [reviews, setReviews] = useState([])
-  
+
   useEffect(()=> {
     loadAllReviews()
   }, [])
@@ -24,6 +24,9 @@ export default function Home() {
   }
 
   const loadAllReviews = () => {
+    // we're going to add a message here
+    // that the reviews were successfully loaded.
+
     getReviews().then((data)=> {
       setReviews(data)
     })
