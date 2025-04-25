@@ -1,23 +1,22 @@
 import {BASE_URL} from './base.js'
 
-const login = ({email, password}) => {
-    return fetch(`${BASE_URL}/login/`, {
+const login = async ({email, password}) => {
+    const response = await fetch(`${BASE_URL}/login/`, {
         method: "POST",
         headers: {
-            'Content-Type': 'application/json'       
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({
             email,
             password
         })
-    }).then((response)=> {
-        if (response.ok) {
-            return response.json();
-        }
-        return Promise.reject(response);
-    }).then((data)=> {
-        return data
     })
+    if (!response.ok) {
+      throw new Error("not valid creds")
+    }
+
+    const data = response.json()
+    return data
 }
 
 export { login }
