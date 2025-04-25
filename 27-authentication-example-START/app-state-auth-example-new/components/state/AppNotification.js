@@ -8,7 +8,7 @@ export const AppNotificationContext = createContext({})
 export function useNotification() {
   const context = useContext(AppNotificationContext)
   if (!context) {
-    throw new Error(`useCount must be used within a AppNotification`)
+    throw new Error(`useNotification must be used within a AppNotification`)
   }
   return context
 }
@@ -21,7 +21,7 @@ export default function AppNotification(props) {
     const handleClose = (event, reason) => {
       console.log(event)
       console.log(reason)
-  
+
       setOpen(false);
     };
 
@@ -32,11 +32,13 @@ export default function AppNotification(props) {
         setOpen(true)
     }
 
-    return <AppNotificationContext.Provider value={{showNotification}}>
+    return <AppNotificationContext.Provider
+      value={{showNotification}}
+    >
       {props.children}
       <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <MuiAlert
-          elevation={6} variant="filled"  
+          elevation={6} variant="filled"
           onClose={handleClose} severity={severity} sx={{ width: '100%' }}
         >
           {text}
