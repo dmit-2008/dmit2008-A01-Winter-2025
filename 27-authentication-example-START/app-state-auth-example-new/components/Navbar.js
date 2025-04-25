@@ -5,43 +5,49 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography'
 
+import { useAuth } from './state/AuthProvider';
 
 export default function NavBar(props) {
   const router = useRouter()
-  /* import isAuthenticated and signOut context here. */ 
+  /* import isAuthenticated and signOut context here. */
+  const { isAuthenticated, signOut } = useAuth()
 
-
-  return <AppBar position="static" sx={{marginBottom: "1rem"}}>
+  return <AppBar position="static" sx={{ marginBottom: "1rem" }}>
     <Toolbar>
       <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
         <Link href="/" >
           App State Example
         </Link>
       </Typography>
-       <Typography variant="h6" component="div" >
+      { !isAuthenticated ?
+        <Typography variant="h6" component="div" >
           <Link href="/login/">
             Login
           </Link>
-        </Typography> 
-        {/*
-        
-        When user is authenticated you should hide the login and see 
-        
+        </Typography>
+        :
         <>
           <Typography variant="h6" component="div" sx={{pr: 1}}>
             <Link href="/dashboard/">
               Dashboard
             </Link>
-          </Typography> 
+          </Typography>
           <Typography
             variant="h6"
-            component="div" >
+            component="div"
+            onClick={signOut}
+          >
             Sign out
-          </Typography> 
+          </Typography>
         </>
-        
+      }
+      {/*
+
+        When user is authenticated you should hide the login and see
+
+
         */}
-        
+
     </Toolbar>
   </AppBar>
 }

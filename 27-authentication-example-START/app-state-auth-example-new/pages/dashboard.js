@@ -12,7 +12,7 @@ export default function Dashboard() {
   /* import the user reroute to home.
   This should be a protected page.
   */
-  const { user } = useAuth()
+  const { user } = useAuth({authPage: true})
 
   return (
     <>

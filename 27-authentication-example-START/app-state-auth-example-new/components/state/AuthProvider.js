@@ -1,6 +1,7 @@
 // we're going to import all of the react pieces we're going to use.
-import {useState, useContext, createContext} from 'react'
+import {useState, useEffect, useContext, createContext} from 'react'
 // what we're going to do here.
+import { useRouter } from 'next/router'
 
 import { login } from '@/utils/api/auth'
 
@@ -11,8 +12,17 @@ export const AuthContext = createContext({})
 
 // 7. create a custom hook all this is doing is simplifying
 //    access the content.
-export function useAuth() {
+export function useAuth(props) {
   const context = useContext(AuthContext)
+  const router = useRouter()
+  useEffect(()=> {
+    // if it's a authPage page and
+    // the user isn't authenticated push them home
+    if (props?.authPage && !context.isAuthenticated) {
+      router.push("/")
+    }
+  }, [router.isReady])
+
   if (!context) {
     throw new Error(`useAuth must be used within a AuthProvider`)
   }
@@ -21,6 +31,7 @@ export function useAuth() {
 
 // 1. create the component and wrap the _app.js
 export default function AuthProvider({children}) {
+  const router = useRouter()
   // 4. we're going to create some state that we know
   //    we're going to need from our backend
   const [token, setToken] = useState()
@@ -43,6 +54,17 @@ export default function AuthProvider({children}) {
     // notify the user there.
   }
 
+  const signOut = ()=> {
+    setIsAuthenticated(false)
+    // remove the user/token infor
+    setUser()
+    setToken()
+    // once we initalize the router
+    // we can navigate them away
+    router.push("/")
+  }
+
+
   // 3. we're going to use AuthContext.Provider and pass in the empty object
   //    that we'll edit to use the state in this component.
   //    In react 19.1 this syntax slightly changes to <AuthContext value={{}}>
@@ -50,7 +72,7 @@ export default function AuthProvider({children}) {
     // 5. some state form the component
     token, user, isAuthenticated,
     // a few functions like signIn and signOut
-    signIn
+    signIn, signOut
   }}>
     {children}
   </AuthContext.Provider>
