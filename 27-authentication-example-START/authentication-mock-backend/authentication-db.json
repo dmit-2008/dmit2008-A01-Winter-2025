@@ -1,0 +1,21 @@
+{
+  "users": [
+    {
+      "email": "rick.james@test.com",
+      "password": "$2a$10$TdUiQRW8xmyzJls0kCMnl.hptkjTeshOhDVKbLUB2GspOQ5Q8wXk2",
+      "firstname": "Rick",
+      "lastname": "James",
+      "age": 34,
+      "id": 1
+    }
+  ],
+  "posts": [
+    {
+      "title": "a post that is way too awesome",
+      "body": "this post is going to blow up.",
+      "userId": 1,
+      "id": 2
+    }
+  ],
+  "comments": []
+}
