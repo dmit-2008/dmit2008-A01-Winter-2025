@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import CssBaseline from '@mui/material/CssBaseline';
@@ -9,10 +10,16 @@ import Navbar from '@/components/Navbar'
 import { useAuth } from '@/components/state/AuthProvider';
 
 export default function Dashboard() {
+  const [posts, setPosts] = useState([])
   /* import the user reroute to home.
   This should be a protected page.
   */
-  const { user } = useAuth({authPage: true})
+  const { user, token } = useAuth({authPage: true})
+
+  // on an effect we're going to load the posts
+  // using the token
+
+
 
   return (
     <>
