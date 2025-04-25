@@ -23,13 +23,17 @@ export default function LoginForm(){
     event.preventDefault()
     /* make the sign in request here. */
     try {
-      // attempt to sign in
+      // 3. attempt to sign in
       await signIn({email: email, password: password})
+      // 4a show notification if successful
       showNotification({
         message: "Login Successful",
         severity: "success"
       })
+      // 5. let's just redirect the user to the dash
+      router.push('/dashboard')
     } catch (error) {
+      // 4b show notification if not correct
       showNotification({
         message: "Incorrect credentials",
         severity: "error"
