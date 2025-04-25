@@ -7,6 +7,14 @@
       "lastname": "James",
       "age": 34,
       "id": 1
+    },
+    {
+      "email": "dan.mouris@test.com",
+      "password": "$2a$10$IW0HE12aOMAGFwaK8i64pOjXvEjCo4vNnzCGpHLQfTmyE/Tmmxd9u",
+      "firstname": "Dan",
+      "lastname": "Mouris",
+      "age": 87,
+      "id": 2
     }
   ],
   "posts": [

@@ -9,14 +9,20 @@ export const AuthContext = createContext({})
 
 // 1. create the component and wrap the _app.js
 export default function AuthProvider({children}) {
+  // 4. we're going to create some state that we know
+  //    we're going to need from our backend
+  const [token, setToken] = useState()
+  const [user, setUser] = useState()
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+
 
 
   // 3. we're going to use AuthContext.Provider and pass in the empty object
   //    that we'll edit to use the state in this component.
   //    In react 19.1 this syntax slightly changes to <AuthContext value={{}}>
   return <AuthContext.Provider value={{
-    // some state form the component
-
+    // 5. some state form the component
+    token, user, isAuthenticated
     // a few functions like signIn and signOut
   }}>
     {children}
