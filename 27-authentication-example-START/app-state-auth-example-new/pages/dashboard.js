@@ -5,9 +5,11 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography'
 
 import Navbar from '@/components/Navbar'
+import SimpleDetailsCard from '@/components/SimpleDetailsCard';
 
 // 1. import and use the useAuth hook
 import { useAuth } from '@/components/state/AuthProvider';
+import { getProtectedPosts } from '@/utils/api/posts';
 
 export default function Dashboard() {
   const [posts, setPosts] = useState([])
@@ -16,9 +18,20 @@ export default function Dashboard() {
   */
   const { user, token } = useAuth({authPage: true})
 
+  // load the posts with the protected token
+  // note: there's better ways to do this
+  // read create a class with a token as a property
+  // that all methods can read
+  const loadPosts = async () => {
+    const data = await getProtectedPosts(token)
+    setPosts(data)
+  }
+
   // on an effect we're going to load the posts
   // using the token
-
+  useEffect(()=> {
+    loadPosts()
+  }, [])
 
 
   return (
@@ -38,9 +51,13 @@ export default function Dashboard() {
             {/* use the user! */}
             Welcome {`${user?.firstname} ${user?.lastname}`}!
           </Typography>
-          <Typography component="h2" variant="h5">
-            This is your dashboard
-          </Typography>
+          { posts.map((post)=> {
+            return <SimpleDetailsCard
+              key={post.id}
+              title={post.title}
+              description={post.body}
+            />
+          })}
         </Box>
       </Container>
     </>
